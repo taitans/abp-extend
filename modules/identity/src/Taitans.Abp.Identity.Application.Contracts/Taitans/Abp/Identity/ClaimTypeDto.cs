@@ -1,0 +1,18 @@
+﻿using System;
+using Volo.Abp.Application.Dtos;
+using Volo.Abp.Identity;
+
+namespace Taitans.Abp.Identity
+{
+    public class ClaimTypeDto : EntityDto<Guid>
+    {
+        public string Name { get; set; }
+        public bool? Required { get; set; }
+        public bool? IsStatic { get; set; }
+        public string Regex { get; set; }
+        public string RegexDescription { get; set; }
+        public string Description { get; set; }
+        public IdentityClaimValueType ValueType { get; set; }
+        public string ValueTypeAsString { get; set; }
+    }
+}

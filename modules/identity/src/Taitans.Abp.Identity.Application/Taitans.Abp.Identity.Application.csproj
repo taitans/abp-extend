@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace></RootNamespace>
+    <PackageIcon>8080.png</PackageIcon>
+    <PackageIconUrl />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="2.0.1" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" Version="2.0.1" />
+    <PackageReference Include="Volo.Abp.Identity.Application" Version="2.0.1" />
+    <ProjectReference Include="..\Taitans.Abp.Identity.Application.Contracts\Taitans.Abp.Identity.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Taitans.Abp.Identity.Domain\Taitans.Abp.Identity.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\nupkg\icon\8080.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
