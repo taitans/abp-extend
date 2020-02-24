@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\..\common.test.props" />
+  <Import Project="..\..\..\common.test.props" />
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -17,7 +17,7 @@
     <PackageReference Include="Volo.Abp.Autofac" Version="2.1.1" />
     <PackageReference Include="Volo.Abp.Authorization" Version="2.1.1" />
     <PackageReference Include="Volo.Abp.TestBase" Version="2.1.1" />
-    <ProjectReference Include="..\..\src\Taitans.Abp.Identity.Domain\Taitans.Abp.Identity.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Taitans.Abp.AuditLogging.Domain\Taitans.Abp.AuditLogging.Domain.csproj" />
   </ItemGroup>
 
 </Project>

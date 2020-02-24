@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\common.test.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace></RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <ProjectReference Include="..\Taitans.Abp.AuditLogging.EntityFrameworkCore.Tests\Taitans.Abp.AuditLogging.EntityFrameworkCore.Tests.csproj" />
+  </ItemGroup>
+
+</Project>
