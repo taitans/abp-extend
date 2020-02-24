@@ -9,7 +9,7 @@ using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Identity;
 using IdentityPermissions = Taitans.Abp.Identity.Authorization.IdentityPermissions;
 
-namespace Taitans.MiddleGround.Identity
+namespace Taitans.Abp.Identity
 {
     public class IdentityClaimTypeAppService : CrudAppService<IdentityClaimType,
         ClaimTypeDto,

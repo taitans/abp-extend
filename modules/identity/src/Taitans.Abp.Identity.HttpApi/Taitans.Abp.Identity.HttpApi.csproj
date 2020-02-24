@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="2.0.1" />
-    <PackageReference Include="Volo.Abp.Identity.HttpApi" Version="2.0.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="2.1.1" />
+    <PackageReference Include="Volo.Abp.Identity.HttpApi" Version="2.1.1" />
     <ProjectReference Include="..\Taitans.Abp.Identity.Application.Contracts\Taitans.Abp.Identity.Application.Contracts.csproj" />
     <ProjectReference Include="..\Taitans.Abp.Identity.Application\Taitans.Abp.Identity.Application.csproj" />
   </ItemGroup>
