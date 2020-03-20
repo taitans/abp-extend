@@ -10,7 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Taitans.Abp.OcelotManagement.Application\Taitans.Abp.OcelotManagement.Application.csproj" />
     <ProjectReference Include="..\Taitans.Abp.OcelotManagement.Domain.Tests\Taitans.Abp.OcelotManagement.Domain.Tests.csproj" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>

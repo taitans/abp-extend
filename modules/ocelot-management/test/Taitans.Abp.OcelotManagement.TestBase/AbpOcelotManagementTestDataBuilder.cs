@@ -77,7 +77,7 @@ namespace Taitans.Abp.OcelotManagement
 
 
                 var host = new Dictionary<string, int>();
-                host.Add("taitans.middleground.identityserver", 80);
+                host.Add("Taitans.middleground.identityserver", 80);
                 global.AddReRoutes(
                     "Token",
                     "/connect/token",
@@ -92,7 +92,7 @@ namespace Taitans.Abp.OcelotManagement
                 global.ReRoutes[0].Priority = 3389;
                 global.ReRoutes[0].AddDelegatingHandler("Taitans");
                 global.ReRoutes[0].Key = "WO_CAO";
-                global.ReRoutes[0].UpstreamHost = "http://www.taitans.com";
+                global.ReRoutes[0].UpstreamHost = "http://www.Taitans.com";
                 global.ReRoutes[0].HttpHandlerOption = new ReRouteHttpHandlerOption
                 {
                     AllowAutoRedirect = true,
@@ -122,7 +122,7 @@ namespace Taitans.Abp.OcelotManagement
                 global.ReRoutes[0].LoadBalancerOption = new ReRouteLoadBalancerOption
                 {
                     Key = "Taitans",
-                    Type = "www.taitans.com",
+                    Type = "www.Taitans.com",
                     Expiry = 95
                 };
 
@@ -133,23 +133,23 @@ namespace Taitans.Abp.OcelotManagement
                     TimeoutValue = 30624
                 };
 
-                global.ReRoutes[0].ServiceName = "taitans-cn";
+                global.ReRoutes[0].ServiceName = "Taitans-cn";
                 global.ReRoutes[0].ReRouteIsCaseSensitive = true;
                 global.ReRoutes[0].CacheOption = new ReRouteCacheOption
                 {
                     TtlSeconds = 2020,
-                    Region = "github.com/taitans"
+                    Region = "github.com/Taitans"
                 };
 
 
                 global.ReRoutes[0].RequestIdKey = "ttgzs.cn";
-                global.ReRoutes[0].AddQueriesToRequests.Add("NB", "www.taitans.com");
-                global.ReRoutes[0].RouteClaimsRequirements.Add("MVP", "www.taitans.com");
-                global.ReRoutes[0].AddClaimsToRequests.Add("AT", "www.taitans.com");
-                global.ReRoutes[0].DownstreamHeaderTransforms.Add("CVT", "www.taitans.com");
-                global.ReRoutes[0].UpstreamHeaderTransforms.Add("DCT", "www.taitans.com");
-                global.ReRoutes[0].AddHeadersToRequests.Add("Trubost", "www.taitans.com");
-                global.ReRoutes[0].ChangeDownstreamPathTemplates.Add("EVCT", "www.taitans.com");
+                global.ReRoutes[0].AddQueriesToRequests.Add("NB", "www.Taitans.com");
+                global.ReRoutes[0].RouteClaimsRequirements.Add("MVP", "www.Taitans.com");
+                global.ReRoutes[0].AddClaimsToRequests.Add("AT", "www.Taitans.com");
+                global.ReRoutes[0].DownstreamHeaderTransforms.Add("CVT", "www.Taitans.com");
+                global.ReRoutes[0].UpstreamHeaderTransforms.Add("DCT", "www.Taitans.com");
+                global.ReRoutes[0].AddHeadersToRequests.Add("Trubost", "www.Taitans.com");
+                global.ReRoutes[0].ChangeDownstreamPathTemplates.Add("EVCT", "www.Taitans.com");
 
                 global.ReRoutes[0].DangerousAcceptAnyServerCertificateValidator = true;
 
@@ -158,7 +158,7 @@ namespace Taitans.Abp.OcelotManagement
                 global.ReRoutes[0].SecurityOption.AddIPBlocked("88.88.88.88");
 
                 var host2 = new Dictionary<string, int>();
-                host2.Add("taitans.middleground.httpapi.host", 80);
+                host2.Add("Taitans.middleground.httpapi.host", 80);
                 global.AddReRoutes(
                    "AllUrl",
                    "/{url}",

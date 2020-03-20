@@ -6,10 +6,10 @@ using Ocelot.Configuration.File;
 using Ocelot.Configuration.Repository;
 using Ocelot.Middleware;
 using Ocelot.Responses;
+using Taitans.Ocelot.Provider.Abp.Repository;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Taitans.Ocelot.Provider.Abp.Repository;
 
 namespace Taitans.Ocelot.Provider.Abp.Configuration
 {
@@ -31,7 +31,7 @@ namespace Taitans.Ocelot.Provider.Abp.Configuration
 
         private static bool UsingAbp(IFileConfigurationRepository fileConfigRepo)
         {
-            return fileConfigRepo.GetType() == typeof(AbpEfCoreFileConfigurationRepository);
+            return fileConfigRepo.GetType() == typeof(FileConfigurationRepository);
         }
 
         private static async Task SetFileConfigInDataBase(IApplicationBuilder builder,

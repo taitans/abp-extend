@@ -19,7 +19,7 @@ namespace Taitans.Abp.OcelotManagement.EntityFrameworkCore
         {
             base.OnModelCreating(builder);
 
-            builder.ConfigureOcelot();
+            builder.ConfigureOcelotManagement();
         }
     }
 }

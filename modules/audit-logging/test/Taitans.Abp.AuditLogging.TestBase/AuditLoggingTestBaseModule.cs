@@ -12,7 +12,7 @@ namespace Taitans.Abp.AuditLogging
         typeof(AbpAutofacModule),
         typeof(AbpTestBaseModule),
         typeof(AbpAuthorizationModule),
-        typeof(AuditLoggingDomainModule)
+        typeof(AbpAuditLoggingDomainModule)
         )]
     public class AuditLoggingTestBaseModule : AbpModule
     {

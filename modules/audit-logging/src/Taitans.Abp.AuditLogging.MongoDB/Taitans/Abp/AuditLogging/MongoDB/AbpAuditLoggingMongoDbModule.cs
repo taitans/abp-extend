@@ -5,7 +5,7 @@ using Volo.Abp.MongoDB;
 namespace Taitans.Abp.AuditLogging.MongoDB
 {
     [DependsOn(
-        typeof(AuditLoggingDomainModule),
+        typeof(AbpAuditLoggingDomainModule),
         typeof(AbpMongoDbModule)
         )]
     public class AbpAuditLoggingMongoDbModule : AbpModule

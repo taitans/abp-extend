@@ -10,7 +10,11 @@ namespace Taitans.Abp.OcelotManagement
         public virtual Guid GlobalConfigurationId { get; protected set; }
         public virtual string ReRouteName { get; protected set; }
 
-        public virtual List<ReRouteRateLimitRuleClientWhitelist> ClientWhitelist { get; protected set; }        public virtual bool EnableRateLimiting { get; set; }        public virtual string Period { get; set; }        public virtual double PeriodTimespan { get; set; }        public virtual long Limit { get; set; }
+        public virtual List<ReRouteRateLimitRuleClientWhitelist> ClientWhitelist { get; protected set; }
+        public virtual bool EnableRateLimiting { get; set; }
+        public virtual string Period { get; set; }
+        public virtual double PeriodTimespan { get; set; }
+        public virtual long Limit { get; set; }
 
         public ReRouteRateLimitRule()
         {

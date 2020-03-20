@@ -1,45 +1,30 @@
-﻿using Newtonsoft.Json;
-using Ocelot.Cache;
-using Ocelot.Configuration.File;
-using Ocelot.Configuration.Repository;
+﻿using Ocelot.Configuration.File;
 using Ocelot.Logging;
-using Ocelot.Responses;
+using Taitans.Abp.OcelotManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Taitans.Abp.OcelotManagement;
-using Taitans.Ocelot.Provider.Abp.Configuration;
+using Volo.Abp.DependencyInjection;
 
 namespace Taitans.Ocelot.Provider.Abp.Repository
 {
-    public class AbpEfCoreFileConfigurationRepository : IFileConfigurationRepository
+    public class EfCoreFileConfigurationRepository : IAbpFileConfigurationRepository, ITransientDependency
     {
         private readonly IOcelotRepository _ocelotGlobalConfigurationRepository;
-        private readonly ConfigCacheOptions _option;
-        private readonly IOcelotCache<FileConfiguration> _cache;
         private readonly IOcelotLogger _logger;
 
-        public AbpEfCoreFileConfigurationRepository(ConfigCacheOptions option, IOcelotCache<FileConfiguration> cache, IOcelotRepository ocelotGlobalConfigurationRepository, IOcelotLoggerFactory loggerFactory)
+        public EfCoreFileConfigurationRepository(IOcelotRepository ocelotGlobalConfigurationRepository, IOcelotLoggerFactory loggerFactory)
         {
             _ocelotGlobalConfigurationRepository = ocelotGlobalConfigurationRepository;
-            _option = option;
-            _cache = cache;
-            _logger = loggerFactory.CreateLogger<AbpEfCoreFileConfigurationRepository>();
+            _logger = loggerFactory.CreateLogger<EfCoreFileConfigurationRepository>();
         }
-        public async Task<Response<FileConfiguration>> Get()
+        public async Task<FileConfiguration> GetFileConfiguration(string name)
         {
-            var config = _cache.Get(_option.CachePrefix + "FileConfiguration", "");
-
-            if (config != null)
-            {
-                return new OkResponse<FileConfiguration>(config);
-            }
-
             var file = new FileConfiguration();
 
             // 提取全局配置信息
-            var globalResult = await _ocelotGlobalConfigurationRepository.FindByNameAsync(_option.GatewayName);
+            var globalResult = await _ocelotGlobalConfigurationRepository.FindByNameAsync(name);
 
             if (globalResult != null)
             {
@@ -259,21 +244,9 @@ namespace Taitans.Ocelot.Provider.Abp.Repository
             }
             else
             {
-                throw new Exception(string.Format("Not found '{0}' gateway name config", _option.GatewayName));
+                throw new Exception(string.Format("Not found '{0}' gateway name config", name));
             }
-            if (file.ReRoutes == null || file.ReRoutes.Count == 0)
-            {
-                return new OkResponse<FileConfiguration>(null);
-            }
-            _logger.LogDebug(JsonConvert.SerializeObject(file));
-
-            return new OkResponse<FileConfiguration>(file);
-        }
-
-        public Task<Response> Set(FileConfiguration fileConfiguration)
-        {
-            _cache.AddAndDelete(_option.CachePrefix + "FileConfiguration", fileConfiguration, TimeSpan.FromSeconds(1800), "");
-            return Task.FromResult((Response)new OkResponse());
+            return file;
         }
     }
 }

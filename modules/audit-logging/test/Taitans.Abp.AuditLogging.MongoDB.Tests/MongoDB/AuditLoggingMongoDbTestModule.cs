@@ -8,7 +8,7 @@ namespace Taitans.Abp.AuditLogging.MongoDB
 {
     [DependsOn(
         typeof(AuditLoggingTestBaseModule),
-        typeof(AuditLoggingMongoDbModule)
+        typeof(AbpAuditLoggingMongoDbModule)
         )]
     public class AuditLoggingMongoDbTestModule : AbpModule
     {

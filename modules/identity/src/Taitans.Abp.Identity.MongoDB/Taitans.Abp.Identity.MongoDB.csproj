@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Identity.MongoDB" Version="2.1.1" />
-    <PackageReference Include="Volo.Abp.MongoDB" Version="2.1.1" />
+    <PackageReference Include="Volo.Abp.Identity.MongoDB" Version="2.3.0" />
+    <PackageReference Include="Volo.Abp.MongoDB" Version="2.3.0" />
     <ProjectReference Include="..\Taitans.Abp.Identity.Domain\Taitans.Abp.Identity.Domain.csproj" />
   </ItemGroup>
 

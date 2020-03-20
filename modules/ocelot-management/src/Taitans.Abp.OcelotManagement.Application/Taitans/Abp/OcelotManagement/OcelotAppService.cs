@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Taitans.Abp.OcelotManagement.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Taitans.Abp.OcelotManagement.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
+using Volo.Abp.EventBus.Distributed;
 
 namespace Taitans.Abp.OcelotManagement
 {
-
     public class OcelotAppService : CrudAppService<
              Ocelot,
              OcelotDto,
@@ -19,12 +19,15 @@ namespace Taitans.Abp.OcelotManagement
     {
         protected IOcelotRepository OcelotRepository { get; }
         protected IOcelotManager OcelotManager { get; }
+        public IDistributedEventBus DistributedEventBus { get; }
 
         public OcelotAppService(IOcelotRepository ocelotRepository,
-            IOcelotManager ocelotManager) : base(ocelotRepository)
+            IOcelotManager ocelotManager,
+            IDistributedEventBus distributedEventBus) : base(ocelotRepository)
         {
             OcelotRepository = ocelotRepository;
             OcelotManager = ocelotManager;
+            DistributedEventBus = distributedEventBus;
         }
 
         public override async Task<OcelotDto> GetAsync(Guid id)
@@ -85,6 +88,13 @@ namespace Taitans.Abp.OcelotManagement
         public override async Task DeleteAsync(Guid id)
         {
             await base.DeleteAsync(id);
+        }
+
+        [AllowAnonymous]
+        public async Task UpdateGatewayRoutesAsync(Guid id)
+        {
+            var ocelot = await base.GetEntityByIdAsync(id);
+            await DistributedEventBus.PublishAsync(new UpdateFileConfigurationEventEventData(ocelot.Name, DateTime.Now));
         }
     }
 }

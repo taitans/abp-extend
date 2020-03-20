@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AutoMapper" Version="2.1.1" />
-    <PackageReference Include="Volo.Abp.Ddd.Application" Version="2.1.1" />
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="2.3.0" />
+    <PackageReference Include="Volo.Abp.Ddd.Application" Version="2.3.0" />
     <ProjectReference Include="..\Taitans.Abp.OcelotManagement.Application.Contracts\Taitans.Abp.OcelotManagement.Application.Contracts.csproj" />
     <ProjectReference Include="..\Taitans.Abp.OcelotManagement.Domain\Taitans.Abp.OcelotManagement.Domain.csproj" />
   </ItemGroup>

@@ -10,7 +10,7 @@ namespace Taitans.Abp.OcelotManagement.EntityFrameworkCore
 {
     public static class AbpOcelotManagementDbContextModelCreatingExtensions
     {
-        public static void ConfigureOcelot(
+        public static void ConfigureOcelotManagement(
             this ModelBuilder builder,
             Action<AbpOcelotManagementModelBuilderConfigurationOptions> optionsAction = null)
         {

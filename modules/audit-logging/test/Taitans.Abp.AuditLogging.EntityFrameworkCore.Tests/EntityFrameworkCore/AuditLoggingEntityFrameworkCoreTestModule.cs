@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
+using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
@@ -9,7 +10,7 @@ namespace Taitans.Abp.AuditLogging.EntityFrameworkCore
 {
     [DependsOn(
         typeof(AuditLoggingTestBaseModule),
-        typeof(AuditLoggingEntityFrameworkCoreModule)
+        typeof(AbpAuditLoggingEntityFrameworkCoreModule)
         )]
     public class AuditLoggingEntityFrameworkCoreTestModule : AbpModule
     {
@@ -31,8 +32,8 @@ namespace Taitans.Abp.AuditLogging.EntityFrameworkCore
             var connection = new SqliteConnection("Data Source=:memory:");
             connection.Open();
 
-            new AuditLoggingDbContext(
-                new DbContextOptionsBuilder<AuditLoggingDbContext>().UseSqlite(connection).Options
+            new AbpAuditLoggingDbContext(
+                new DbContextOptionsBuilder<AbpAuditLoggingDbContext>().UseSqlite(connection).Options
             ).GetService<IRelationalDatabaseCreator>().CreateTables();
             
             return connection;

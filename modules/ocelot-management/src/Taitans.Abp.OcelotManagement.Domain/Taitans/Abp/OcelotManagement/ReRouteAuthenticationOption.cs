@@ -9,7 +9,8 @@ namespace Taitans.Abp.OcelotManagement
     {
         public virtual Guid GlobalConfigurationId { get; protected set; }
         public virtual string ReRouteName { get; protected set; }
-        public virtual string AuthenticationProviderKey { get; set; }        public virtual List<ReRouteAuthenticationOptionAllowedScope> AllowedScopes { get; protected set; }
+        public virtual string AuthenticationProviderKey { get; set; }
+        public virtual List<ReRouteAuthenticationOptionAllowedScope> AllowedScopes { get; protected set; }
 
         public ReRouteAuthenticationOption()
         {

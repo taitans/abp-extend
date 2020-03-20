@@ -10,7 +10,7 @@ namespace Taitans.Abp.OcelotManagement.EntityFrameworkCore
 {
     [DependsOn(
         typeof(AbpOcelotManagementTestBaseModule),
-        typeof(AbpOcelotEntityFrameworkCoreModule)
+        typeof(AbpOcelotManagementEntityFrameworkCoreModule)
         )]
     public class AbpOcelotManagementEntityFrameworkCoreTestModule : AbpModule
     {

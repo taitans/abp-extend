@@ -1,5 +1,5 @@
-﻿using System;
-using Taitans.Abp.OcelotManagement.EntityFrameworkCore;
+﻿using Taitans.Abp.OcelotManagement.EntityFrameworkCore;
+using System;
 
 namespace Taitans.Abp.OcelotManagement
 {

@@ -2,9 +2,9 @@
 using Microsoft.Extensions.Options;
 using Ocelot.Configuration.Repository;
 using Ocelot.DependencyInjection;
-using System;
 using Taitans.Ocelot.Provider.Abp.Configuration;
 using Taitans.Ocelot.Provider.Abp.Repository;
+using System;
 
 namespace Taitans.Ocelot.Provider.Abp.DependencyInjection
 {
@@ -16,12 +16,10 @@ namespace Taitans.Ocelot.Provider.Abp.DependencyInjection
             builder.Services.AddSingleton(
                 resolver => resolver.GetRequiredService<IOptions<ConfigCacheOptions>>().Value);
 
-            #region 注入其他配置信息
-            //重写提取Ocelot配置信息
-            builder.Services.AddSingleton(DataBaseConfigurationProvider.Get);
-            builder.Services.AddSingleton<IFileConfigurationRepository, AbpEfCoreFileConfigurationRepository>();
 
-            #endregion
+            builder.Services.AddSingleton(DataBaseConfigurationProvider.Get);
+            builder.Services.AddSingleton<IFileConfigurationRepository, FileConfigurationRepository>();
+
             return builder;
         }
     }

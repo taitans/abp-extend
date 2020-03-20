@@ -3,7 +3,7 @@
 namespace Taitans.Abp.AuditLogging
 {
     [DependsOn(
-        typeof(AuditLoggingApplicationModule),
+        typeof(AbpAuditLoggingApplicationModule),
         typeof(AuditLoggingDomainTestModule)
         )]
     public class AuditLoggingApplicationTestModule : AbpModule

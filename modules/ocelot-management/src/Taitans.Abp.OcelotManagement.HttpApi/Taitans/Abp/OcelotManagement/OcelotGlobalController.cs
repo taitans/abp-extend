@@ -56,6 +56,12 @@ namespace Taitans.Abp.OcelotManagement
             return await _ocelotGlobalConfigurationService.UpdateReRoutesAsync(id, input);
         }
 
+        [HttpPut("{id}/update-gateway-routes")]
+        public async Task UpdateGatewayRoutesAsync(Guid id)
+        {
+            await _ocelotGlobalConfigurationService.UpdateGatewayRoutesAsync(id);
+        }
+
         [HttpPut("{id}")]
         public async Task<OcelotDto> UpdateAsync(Guid id, OcelotUpdateDto input)
         {

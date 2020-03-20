@@ -8,7 +8,7 @@ namespace Taitans.Abp.OcelotManagement.EntityFrameworkCore
         typeof(AbpOcelotManagementDomainModule),
         typeof(AbpEntityFrameworkCoreModule)
     )]
-    public class AbpOcelotEntityFrameworkCoreModule : AbpModule
+    public class AbpOcelotManagementEntityFrameworkCoreModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

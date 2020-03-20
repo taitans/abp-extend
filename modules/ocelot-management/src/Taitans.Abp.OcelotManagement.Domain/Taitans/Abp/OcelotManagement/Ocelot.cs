@@ -9,7 +9,14 @@ namespace Taitans.Abp.OcelotManagement
     public class Ocelot : FullAuditedAggregateRoot<Guid>
     {
         public virtual string Name { get; protected set; }
-        public virtual string RequestIdKey { get; set; }        public virtual OcelotServiceDiscoveryProvider ServiceDiscoveryProvider { get; set; }        public virtual OcelotRateLimitOption RateLimitOption { get; set; }        public virtual OcelotQoSOption QoSOption { get; set; }        public virtual string BaseUrl { get; set; }        public virtual OcelotLoadBalancerOption LoadBalancerOption { get; set; }        public virtual string DownstreamScheme { get; set; }        public virtual OcelotHttpHandlerOption HttpHandlerOption { get; set; }
+        public virtual string RequestIdKey { get; set; }
+        public virtual OcelotServiceDiscoveryProvider ServiceDiscoveryProvider { get; set; }
+        public virtual OcelotRateLimitOption RateLimitOption { get; set; }
+        public virtual OcelotQoSOption QoSOption { get; set; }
+        public virtual string BaseUrl { get; set; }
+        public virtual OcelotLoadBalancerOption LoadBalancerOption { get; set; }
+        public virtual string DownstreamScheme { get; set; }
+        public virtual OcelotHttpHandlerOption HttpHandlerOption { get; set; }
         public virtual List<OcelotReRoute> ReRoutes { get; protected set; }
 
         protected Ocelot() { }
