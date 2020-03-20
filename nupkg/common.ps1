@@ -6,7 +6,9 @@ $rootFolder = Join-Path $packFolder "../"
 $solutions = (
     "modules/identity",
     "modules/identityserver",
-    "modules/ocelot-management"
+    "modules/ocelot-management",
+    "modules/audit-logging",
+    "modules/saas-management"
 )
 
 # List of projects
@@ -41,5 +43,25 @@ $projects = (
     "modules/ocelot-management/src/Taitans.Abp.OcelotManagement.Domain.Shared",
     "modules/ocelot-management/src/Taitans.Abp.OcelotManagement.EntityFrameworkCore",
     "modules/ocelot-management/src/Taitans.Abp.OcelotManagement.MongoDB",
-    "modules/ocelot-management/src/Taitans.Ocelot.Provider.Abp"
+    "modules/ocelot-management/src/Taitans.Ocelot.Provider.Abp",
+
+    # modules/audit-logging"
+    "modules/audit-logging/src/Taitans.Abp.AuditLogging.Application.Contracts",
+    "modules/audit-logging/src/Taitans.Abp.AuditLogging.Application",
+    "modules/audit-logging/src/Taitans.Abp.AuditLogging.HttpApi",
+    "modules/audit-logging/src/Taitans.Abp.AuditLogging.HttpApi.Client",
+    "modules/audit-logging/src/Taitans.Abp.AuditLogging.Domain",
+    "modules/audit-logging/src/Taitans.Abp.AuditLogging.Domain.Shared",
+    "modules/audit-logging/src/Taitans.Abp.AuditLogging.EntityFrameworkCore",
+    "modules/audit-logging/src/Taitans.Abp.AuditLogging.MongoDB",
+
+    # modules/saas-management
+    "modules/saas-management/src/Taitans.Abp.SaasManagement.Application.Contracts",
+    "modules/saas-management/src/Taitans.Abp.SaasManagement.Application",
+    "modules/saas-management/src/Taitans.Abp.SaasManagement.HttpApi",
+    "modules/saas-management/src/Taitans.Abp.SaasManagement.HttpApi.Client",
+    "modules/saas-management/src/Taitans.Abp.SaasManagement.Domain",
+    "modules/saas-management/src/Taitans.Abp.SaasManagement.Domain.Shared",
+    "modules/saas-management/src/Taitans.Abp.SaasManagement.EntityFrameworkCore",
+    "modules/saas-management/src/Taitans.Abp.SaasManagement.MongoDB"
 )

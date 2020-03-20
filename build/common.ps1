@@ -7,6 +7,8 @@ $rootFolder = (Get-Item -Path "./" -Verbose).FullName
 $solutionPaths = (
     "../modules/identity",
     "../modules/identityserver",
-    "../modules/ocelot-management"
+    "../modules/ocelot-management",
+    "../modules/audit-logging",
+    "../modules/saas-management"
 
 )
