@@ -10,7 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Taitans.Abp.SaasManagement.Application\Taitans.Abp.SaasManagement.Application.csproj" />
     <ProjectReference Include="..\Taitans.Abp.SaasManagement.Domain.Tests\Taitans.Abp.SaasManagement.Domain.Tests.csproj" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
   </ItemGroup>
 
 </Project>
