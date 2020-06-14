@@ -13,8 +13,8 @@ namespace Taitans.Abp.OcelotManagement
              OcelotCreateDto,
              OcelotUpdateDto>, IApplicationService
     {
-        Task<IList<OcelotReRouteDto>> GetReRoutesAsync(Guid id);
-        Task<IList<OcelotReRouteDto>> UpdateReRoutesAsync(Guid id, List<OcelotReRouteDto> input);
-        Task UpdateGatewayRoutesAsync(Guid id);
+        Task<List<OcelotRouteDto>> GetRoutesAsync(Guid id);
+        Task<List<OcelotRouteDto>> UpdateRoutesAsync(Guid id, List<OcelotRouteDto> input);
+        Task Reload(Guid id);
     }
 }

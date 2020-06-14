@@ -8,7 +8,7 @@ namespace Taitans.Abp.OcelotManagement
 {
     public interface IOcelotRepository : IRepository<Ocelot, Guid>
     {
-        Task<IList<OcelotReRoute>> GetReRoutesAsync(Guid id);
+        Task<List<OcelotRoute>> GetRoutesAsync(Guid id);
 
         Task<Ocelot> FindByNameAsync(
             string name,

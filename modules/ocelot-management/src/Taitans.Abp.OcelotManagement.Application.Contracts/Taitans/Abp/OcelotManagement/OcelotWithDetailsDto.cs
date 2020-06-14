@@ -4,6 +4,6 @@ namespace Taitans.Abp.OcelotManagement
 {
     public class OcelotWithDetailsDto : OcelotDtoBase
     {
-        public IList<OcelotReRouteDto> OcelotReRoutes { get; set; }
+        public List<OcelotRouteDto> OcelotRoutes { get; set; }
     }
 }

@@ -5,22 +5,25 @@ using Volo.Abp.Domain.Entities;
 
 namespace Taitans.Abp.OcelotManagement
 {
-    public class ReRouteAuthenticationOption : Entity
+    public class RouteAuthenticationOption : Entity
     {
         public virtual Guid GlobalConfigurationId { get; protected set; }
-        public virtual string ReRouteName { get; protected set; }
+        public virtual string RouteName { get; protected set; }
         public virtual string AuthenticationProviderKey { get; set; }
-        public virtual List<ReRouteAuthenticationOptionAllowedScope> AllowedScopes { get; protected set; }
+        public virtual List<RouteAuthenticationOptionAllowedScope> AllowedScopes { get; protected set; }
 
-        public ReRouteAuthenticationOption()
+        public RouteAuthenticationOption(Guid globalConfigurationId, string routeName)
         {
-            AllowedScopes = new List<ReRouteAuthenticationOptionAllowedScope>();
+            GlobalConfigurationId = globalConfigurationId;
+            RouteName = routeName;
+            AllowedScopes = new List<RouteAuthenticationOptionAllowedScope>();
         }
 
         public void AddScope(string scope)
         {
-            AllowedScopes.Add(new ReRouteAuthenticationOptionAllowedScope(scope));
+            AllowedScopes.Add(new RouteAuthenticationOptionAllowedScope(GlobalConfigurationId, RouteName, scope));
         }
+
         public virtual void RemoveAllScopes()
         {
             AllowedScopes.Clear();
@@ -38,7 +41,7 @@ namespace Taitans.Abp.OcelotManagement
 
         public override object[] GetKeys()
         {
-            return new object[] { GlobalConfigurationId, ReRouteName };
+            return new object[] { GlobalConfigurationId, RouteName };
         }
     }
 }

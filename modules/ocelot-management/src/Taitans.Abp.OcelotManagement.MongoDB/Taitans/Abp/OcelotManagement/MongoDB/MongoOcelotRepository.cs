@@ -20,12 +20,12 @@ namespace Taitans.Abp.OcelotManagement.MongoDB
                 .FirstOrDefaultAsync(t => t.Name == name, GetCancellationToken(cancellationToken));
         }
 
-        public async Task<IList<OcelotReRoute>> GetReRoutesAsync(Guid id)
+        public async Task<List<OcelotRoute>> GetRoutesAsync(Guid id)
         {
             return (await GetMongoQueryable()
-                .FirstOrDefaultAsync(t => t.Id == id))?.ReRoutes;
+                .FirstOrDefaultAsync(t => t.Id == id))?.Routes;
 
-            //return await DbContext.Set<OcelotReRoute>()
+            //return await DbContext.Set<OcelotRoute>()
             //  .Include(c => c.DownstreamHostAndPorts)
             //  .Include(c => c.UpstreamHttpMethods)
             //  .Include(c => c.LoadBalancerOptions)

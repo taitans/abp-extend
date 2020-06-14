@@ -37,7 +37,7 @@ namespace Taitans.Ocelot.Provider.Abp.Repository
                 return new OkResponse<FileConfiguration>(config);
             }
             var file = await _abpFileConfigurationRepository.GetFileConfiguration(_option.GatewayName);
-            if (file.ReRoutes == null || file.ReRoutes.Count == 0)
+            if (file.Routes == null || file.Routes.Count == 0)
             {
                 return new OkResponse<FileConfiguration>(null);
             }

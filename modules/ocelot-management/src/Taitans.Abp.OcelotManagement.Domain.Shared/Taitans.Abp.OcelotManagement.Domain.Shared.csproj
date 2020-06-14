@@ -25,8 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.EventBus" Version="2.6.2" />
-    <PackageReference Include="Volo.Abp.Validation" Version="2.6.2" />
+    <PackageReference Include="Volo.Abp.EventBus" Version="2.9.0" />
+    <PackageReference Include="Volo.Abp.Validation" Version="2.9.0" />
   </ItemGroup>
 
   <ItemGroup>

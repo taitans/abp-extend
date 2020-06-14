@@ -28,36 +28,31 @@ namespace Taitans.Abp.OcelotManagement
             CreateMap<OcelotHttpHandlerOptionDto, OcelotHttpHandlerOption>();
             CreateMap<OcelotHttpHandlerOption, OcelotHttpHandlerOptionDto>();
 
-            CreateMap<OcelotReRouteDto, OcelotReRoute>()
-                .ConstructUsing(sourc => new OcelotReRoute(new Guid(), sourc.Name, sourc.UpstreamPathTemplate, sourc.UpstreamHost, sourc.DownstreamScheme, sourc.DownstreamPathTemplate))
-                .ForMember(dest => dest.DelegatingHandlers, sourc => sourc.MapFrom(new ReRouteDelegatingHandlerResolver()))
-                .ForMember(dest => dest.DownstreamHostAndPorts, sourc => sourc.MapFrom(new ReRouteDownstreamHostAndPortResolver()))
-                .ForMember(dest => dest.UpstreamHttpMethods, sourc => sourc.MapFrom(new ReRouteUpstreamHttpMethodResolver()));
-            CreateMap<OcelotReRoute, OcelotReRouteDto>()
-                .ForMember(dest => dest.DelegatingHandlers, sourc => sourc.MapFrom(new ReRouteDelegatingHandlerDtoResolver()))
-                .ForMember(dest => dest.UpstreamHttpMethods, sourc => sourc.MapFrom(new ReRouteUpstreamHttpMethodDtoResolver()))
-                .ForMember(dest => dest.DownstreamHostAndPorts, sourc => sourc.MapFrom(new ReRouteDownstreamHostAndPortDtoResolver()));
+            CreateMap<OcelotRoute, OcelotRouteDto>()
+                .ForMember(dest => dest.DelegatingHandlers, sourc => sourc.MapFrom(new RouteDelegatingHandlerDtoResolver()))
+                .ForMember(dest => dest.UpstreamHttpMethods, sourc => sourc.MapFrom(new RouteUpstreamHttpMethodDtoResolver()))
+                .ForMember(dest => dest.DownstreamHostAndPorts, sourc => sourc.MapFrom(new RouteDownstreamHostAndPortDtoResolver()));
 
-            CreateMap<ReRouteHttpHandlerOptionDto, ReRouteHttpHandlerOption>();
-            CreateMap<ReRouteHttpHandlerOption, ReRouteHttpHandlerOptionDto>();
+            CreateMap<RouteHttpHandlerOptionDto, RouteHttpHandlerOption>();
+            CreateMap<RouteHttpHandlerOption, RouteHttpHandlerOptionDto>();
 
-            CreateMap<ReRouteAuthenticationOptionDto, ReRouteAuthenticationOption>();
-            CreateMap<ReRouteAuthenticationOption, ReRouteAuthenticationOptionDto>();
+            CreateMap<RouteAuthenticationOptionDto, RouteAuthenticationOption>();
+            CreateMap<RouteAuthenticationOption, RouteAuthenticationOptionDto>();
 
-            CreateMap<ReRouteRateLimitRuleDto, ReRouteRateLimitRule>();
-            CreateMap<ReRouteRateLimitRule, ReRouteRateLimitRuleDto>();
+            CreateMap<RouteRateLimitRuleDto, RouteRateLimitRule>();
+            CreateMap<RouteRateLimitRule, RouteRateLimitRuleDto>();
 
-            CreateMap<ReRouteLoadBalancerOptionDto, ReRouteLoadBalancerOption>();
-            CreateMap<ReRouteLoadBalancerOption, ReRouteLoadBalancerOptionDto>();
+            CreateMap<RouteLoadBalancerOptionDto, RouteLoadBalancerOption>();
+            CreateMap<RouteLoadBalancerOption, RouteLoadBalancerOptionDto>();
 
-            CreateMap<ReRouteQoSOptionDto, ReRouteQoSOption>();
-            CreateMap<ReRouteQoSOption, ReRouteQoSOptionDto>();
+            CreateMap<RouteQoSOptionDto, RouteQoSOption>();
+            CreateMap<RouteQoSOption, RouteQoSOptionDto>();
 
-            CreateMap<ReRouteCacheOptionDto, ReRouteCacheOption>();
-            CreateMap<ReRouteCacheOption, ReRouteCacheOptionDto>();
+            CreateMap<RouteCacheOptionDto, RouteCacheOption>();
+            CreateMap<RouteCacheOption, RouteCacheOptionDto>();
 
-            CreateMap<ReRouteSecurityOptionDto, ReRouteSecurityOption>();
-            CreateMap<ReRouteSecurityOption, ReRouteSecurityOptionDto>();
+            CreateMap<RouteSecurityOptionDto, RouteSecurityOption>();
+            CreateMap<RouteSecurityOption, RouteSecurityOptionDto>();
         }
     }
 

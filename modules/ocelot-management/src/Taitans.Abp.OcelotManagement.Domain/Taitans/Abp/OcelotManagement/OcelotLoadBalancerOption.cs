@@ -6,6 +6,11 @@ namespace Taitans.Abp.OcelotManagement
     {
         public virtual Guid GlobalConfigurationId { get; protected set; }
 
+        public OcelotLoadBalancerOption(Guid globalConfigurationId)
+        {
+            GlobalConfigurationId = globalConfigurationId;
+        }
+
         public override object[] GetKeys()
         {
             return new object[] { GlobalConfigurationId };

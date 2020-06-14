@@ -92,61 +92,213 @@ namespace Taitans.Abp.OcelotManagement
         }
 
         [Fact]
-        public async Task GetReRoutesAsync()
+        public async Task GetRoutesAsync()
         {
             var ocelot = UsingDbContext(dbContext => dbContext.GlobalConfigurations.Single(t => t.Name == "middleware"));
 
-            var route = await _ocelotAppService.GetReRoutesAsync(ocelot.Id);
+            var routes = await _ocelotAppService.GetRoutesAsync(ocelot.Id);
 
-            var reRoute = route.FirstOrDefault(c => c.Name == "Token");
-            reRoute.Timeout.ShouldBe(4399);
-            reRoute.Priority.ShouldBe(3389);
-            reRoute.DelegatingHandlers.Count.ShouldBeGreaterThan(0);
-            reRoute.DelegatingHandlers.ShouldContain("Taitans");
-            reRoute.Key.ShouldBe("WO_CAO");
-            reRoute.UpstreamHost.ShouldBe("http://www.Taitans.com");
-            reRoute.DownstreamHostAndPorts.ShouldNotBeNull();
+            var route = routes.FirstOrDefault(c => c.Name == "Token");
+            route.Timeout.ShouldBe(4399);
+            route.Priority.ShouldBe(3389);
+            route.DelegatingHandlers.Count.ShouldBeGreaterThan(0);
+            route.DelegatingHandlers.ShouldContain("Taitans");
+            route.Key.ShouldBe("WO_CAO");
+            route.UpstreamHost.ShouldBe("http://www.Taitans.com");
+            route.DownstreamHostAndPorts.ShouldNotBeNull();
 
-            reRoute.HttpHandlerOption.ShouldNotBeNull();
-            reRoute.HttpHandlerOption.AllowAutoRedirect.ShouldBe(true);
-            reRoute.HttpHandlerOption.UseCookieContainer.ShouldBe(true);
-            reRoute.HttpHandlerOption.UseProxy.ShouldBe(true);
-            reRoute.HttpHandlerOption.UseTracing.ShouldBe(true);
+            route.HttpHandlerOption.ShouldNotBeNull();
+            route.HttpHandlerOption.AllowAutoRedirect.ShouldBe(true);
+            route.HttpHandlerOption.UseCookieContainer.ShouldBe(true);
+            route.HttpHandlerOption.UseProxy.ShouldBe(true);
+            route.HttpHandlerOption.UseTracing.ShouldBe(true);
 
-            reRoute.AuthenticationOption.ShouldNotBeNull();
-            reRoute.AuthenticationOption.AllowedScopes.Count.ShouldBe(1);
-            reRoute.AuthenticationOption.AllowedScopes.ShouldContain("Taitans");
-            reRoute.RateLimitOption.ShouldNotBeNull();
-            reRoute.RateLimitOption.ClientWhitelist.Count.ShouldBe(1);
-            reRoute.LoadBalancerOption.ShouldNotBeNull();
-            reRoute.LoadBalancerOption.Expiry.ShouldBe(95);
-            reRoute.LoadBalancerOption.Key.ShouldBe("Taitans");
-            reRoute.LoadBalancerOption.Type.ShouldBe("www.Taitans.com");
-            reRoute.QoSOption.ShouldNotBeNull();
-            reRoute.QoSOption.DurationOfBreak.ShouldBe(24300);
-            reRoute.QoSOption.ExceptionsAllowedBeforeBreaking.ShouldBe(802);
-            reRoute.QoSOption.TimeoutValue.ShouldBe(30624);
-            reRoute.DownstreamScheme.ShouldBe("http");
-            reRoute.ServiceName.ShouldBe("Taitans-cn");
-            reRoute.ReRouteIsCaseSensitive.ShouldBe(true);
-            reRoute.CacheOption.ShouldNotBeNull();
-            reRoute.CacheOption.TtlSeconds.ShouldBe(2020);
-            reRoute.CacheOption.Region.ShouldBe("github.com/Taitans");
-            reRoute.RequestIdKey.ShouldNotBeNull("ttgzs.cn");
-            reRoute.AddQueriesToRequests.ShouldContainKeyAndValue("NB", "www.Taitans.com");
-            reRoute.RouteClaimsRequirements.ShouldContainKeyAndValue("MVP", "www.Taitans.com");
-            reRoute.AddClaimsToRequests.ShouldContainKeyAndValue("AT", "www.Taitans.com");
-            reRoute.DownstreamHeaderTransforms.ShouldContainKeyAndValue("CVT", "www.Taitans.com");
-            reRoute.UpstreamHeaderTransforms.ShouldContainKeyAndValue("DCT", "www.Taitans.com");
-            reRoute.AddHeadersToRequests.ShouldContainKeyAndValue("Trubost", "www.Taitans.com");
-            reRoute.ChangeDownstreamPathTemplates.ShouldContainKeyAndValue("EVCT", "www.Taitans.com");
-            reRoute.UpstreamHttpMethods.Count.ShouldBe(1);
-            reRoute.UpstreamPathTemplate.ShouldBe("/connect/token");
-            reRoute.DownstreamPathTemplate.ShouldBe("/connect/token");
-            reRoute.DangerousAcceptAnyServerCertificateValidator.ShouldBe(true);
-            reRoute.SecurityOption.IPAllowedList.Count.ShouldBe(1);
-            reRoute.SecurityOption.IPBlockedList.Count.ShouldBe(1);
+            route.AuthenticationOption.ShouldNotBeNull();
+            route.AuthenticationOption.AllowedScopes.Count.ShouldBe(1);
+            route.AuthenticationOption.AllowedScopes.ShouldContain("Taitans");
+            route.RateLimitOption.ShouldNotBeNull();
+            route.RateLimitOption.ClientWhitelist.Count.ShouldBe(1);
+            route.LoadBalancerOption.ShouldNotBeNull();
+            route.LoadBalancerOption.Expiry.ShouldBe(95);
+            route.LoadBalancerOption.Key.ShouldBe("Taitans");
+            route.LoadBalancerOption.Type.ShouldBe("www.Taitans.com");
+            route.QoSOption.ShouldNotBeNull();
+            route.QoSOption.DurationOfBreak.ShouldBe(24300);
+            route.QoSOption.ExceptionsAllowedBeforeBreaking.ShouldBe(802);
+            route.QoSOption.TimeoutValue.ShouldBe(30624);
+            route.DownstreamScheme.ShouldBe("http");
+            route.ServiceName.ShouldBe("Taitans-cn");
+            route.RouteIsCaseSensitive.ShouldBe(true);
+            route.CacheOption.ShouldNotBeNull();
+            route.CacheOption.TtlSeconds.ShouldBe(2020);
+            route.CacheOption.Region.ShouldBe("github.com/Taitans");
+            route.RequestIdKey.ShouldNotBeNull("ttgzs.cn");
+            route.AddQueriesToRequests.ShouldContainKeyAndValue("NB", "www.Taitans.com");
+            route.RouteClaimsRequirements.ShouldContainKeyAndValue("MVP", "www.Taitans.com");
+            route.AddClaimsToRequests.ShouldContainKeyAndValue("AT", "www.Taitans.com");
+            route.DownstreamHeaderTransforms.ShouldContainKeyAndValue("CVT", "www.Taitans.com");
+            route.UpstreamHeaderTransforms.ShouldContainKeyAndValue("DCT", "www.Taitans.com");
+            route.AddHeadersToRequests.ShouldContainKeyAndValue("Trubost", "www.Taitans.com");
+            route.ChangeDownstreamPathTemplates.ShouldContainKeyAndValue("EVCT", "www.Taitans.com");
+            route.UpstreamHttpMethods.Count.ShouldBe(1);
+            route.UpstreamHttpMethods.ShouldContain("POST");
+            route.UpstreamPathTemplate.ShouldBe("/connect/token");
+            route.DownstreamPathTemplate.ShouldBe("/connect/token");
+            route.DangerousAcceptAnyServerCertificateValidator.ShouldBe(true);
+            route.SecurityOption.IPAllowedList.Count.ShouldBe(1);
+            route.SecurityOption.IPBlockedList.Count.ShouldBe(1);
         }
+
+        [Fact]
+        public async Task UpdateRouteAsync()
+        {
+            var ocelot = UsingDbContext(dbContext => dbContext.GlobalConfigurations.Single(t => t.Name == "middleware"));
+
+            await _ocelotAppService.UpdateRoutesAsync(ocelot.Id, new System.Collections.Generic.List<OcelotRouteDto>() {
+                new OcelotRouteDto()
+                {
+                    Name="Token",
+                    UpstreamPathTemplate = "/taitans/com",
+                    UpstreamHost = "http://ttgzs.cn",
+                    DownstreamScheme ="https",
+                    DownstreamPathTemplate  = "/ttgzs/net",
+                    DownstreamHostAndPorts = new System.Collections.Generic.List<RouteDownstreamHostAndPortDto>()
+                    {
+                       new RouteDownstreamHostAndPortDto(){ Host = "www.taitans.com", Port = 80}
+                    },
+                    UpstreamHttpMethods = new System.Collections.Generic.List<string>{ "DDD" },
+                    DelegatingHandlers = new System.Collections.Generic.List<string>{ "ttgzs" },
+                    Timeout = 44300,
+                    Priority = 65535,
+                    Key = "BIU_TE_FOU",
+                    HttpHandlerOption = new RouteHttpHandlerOptionDto
+                    {
+                        AllowAutoRedirect = false,
+                        UseCookieContainer = false,
+                        UseProxy = true,
+                        UseTracing = false,
+                    },
+                    AuthenticationOption = new RouteAuthenticationOptionDto
+                    {
+                        AuthenticationProviderKey ="TTGZS",
+                        AllowedScopes = new System.Collections.Generic.List<string>
+                        {
+                            "Studio",
+                            "Ttgzs"
+                        }
+                    },
+                    RateLimitOption = new RouteRateLimitRuleDto
+                    {
+                        Period = "Ttgzs",
+                        PeriodTimespan = 3.14156666,
+                        EnableRateLimiting = false,
+                        Limit = 10086,
+                        ClientWhitelist = new System.Collections.Generic.List<string>
+                        {
+                            "cn"
+                        }
+                    },
+                    LoadBalancerOption = new RouteLoadBalancerOptionDto
+                    {
+                        Key = "ttgzs",
+                        Type = "www.ttgzs.cn",
+                        Expiry = 9595
+                    },
+                    QoSOption = new RouteQoSOptionDto
+                    {
+                        ExceptionsAllowedBeforeBreaking = 802,
+                        DurationOfBreak = 24300,
+                        TimeoutValue = 30624
+                    },
+                    ServiceName = "ttgzs.cn",
+                    RouteIsCaseSensitive = false,
+                    CacheOption = new RouteCacheOptionDto
+                    {
+                        TtlSeconds = 2020,
+                        Region = "github.com/loongle"
+                    },
+                    RequestIdKey = "taitans.com",
+
+                    DangerousAcceptAnyServerCertificateValidator = false,
+                    SecurityOption = new RouteSecurityOptionDto
+                    {
+                        IPAllowedList = new System.Collections.Generic.List<string>{"123.123.123.123"},
+                        IPBlockedList = new System.Collections.Generic.List<string>{"114.114.114.114"}
+                    }
+                },
+                new OcelotRouteDto()
+                {
+                    Name="Loongle",
+                    UpstreamPathTemplate ="/taitans/loognle",
+                    UpstreamHost = null,
+                    DownstreamScheme ="http",
+                    DownstreamPathTemplate  = "/ttgzs/loongle",
+                    DownstreamHostAndPorts = new System.Collections.Generic.List<RouteDownstreamHostAndPortDto>()
+                    {
+                       new RouteDownstreamHostAndPortDto(){ Host ="www.ttgzs.net",Port=80}
+                    }
+                }
+            });
+
+            var result = await _ocelotAppService.GetRoutesAsync(ocelot.Id);
+            result.Count.ShouldBe(2);
+            var token = result.Find(c => c.Name == "Token");
+            token.ShouldNotBeNull();
+            token.UpstreamPathTemplate.ShouldBe("/taitans/com");
+            token.UpstreamHost.ShouldBe("http://ttgzs.cn");
+            token.DownstreamScheme.ShouldBe("https");
+            token.DownstreamPathTemplate.ShouldBe("/ttgzs/net");
+            token.DownstreamHostAndPorts.ShouldContain(c => c.Host == "www.taitans.com" && c.Port == 80);
+            token.DelegatingHandlers.ShouldContain("ttgzs");
+            token.Timeout.ShouldBe(44300);
+            token.Priority.ShouldBe(65535);
+            token.Key.ShouldBe("BIU_TE_FOU");
+            token.UpstreamHttpMethods.Count.ShouldBe(1);
+            token.UpstreamHttpMethods.ShouldContain("DDD");
+
+            token.HttpHandlerOption.AllowAutoRedirect.ShouldBe(false);
+            token.HttpHandlerOption.UseCookieContainer.ShouldBe(false);
+            token.HttpHandlerOption.UseProxy.ShouldBe(true);
+            token.HttpHandlerOption.UseTracing.ShouldBe(false);
+
+            token.AuthenticationOption.AuthenticationProviderKey.ShouldBe("TTGZS");
+            token.AuthenticationOption.AllowedScopes.Count.ShouldBe(2);
+            token.AuthenticationOption.AllowedScopes.ShouldContain("Studio");
+            token.AuthenticationOption.AllowedScopes.ShouldContain("Ttgzs");
+
+            token.RateLimitOption.Period.ShouldBe("Ttgzs");
+            token.RateLimitOption.PeriodTimespan.ShouldBe(3.14156666);
+            token.RateLimitOption.EnableRateLimiting.ShouldBe(false);
+            token.RateLimitOption.Limit.ShouldBe(10086);
+            token.RateLimitOption.ClientWhitelist.Count.ShouldBe(1);
+            token.RateLimitOption.ClientWhitelist.ShouldContain("cn");
+
+            token.LoadBalancerOption.Key.ShouldBe("ttgzs");
+            token.LoadBalancerOption.Type.ShouldBe("www.ttgzs.cn");
+            token.LoadBalancerOption.Expiry.ShouldBe(9595);
+
+            token.QoSOption.ExceptionsAllowedBeforeBreaking.ShouldBe(802);
+            token.QoSOption.DurationOfBreak.ShouldBe(24300);
+            token.QoSOption.TimeoutValue.ShouldBe(30624);
+
+            token.ServiceName.ShouldBe("ttgzs.cn");
+            token.RouteIsCaseSensitive.ShouldBe(false);
+
+            token.CacheOption.TtlSeconds.ShouldBe(2020);
+            token.CacheOption.Region.ShouldBe("github.com/loongle");
+
+            token.RequestIdKey.ShouldBe("taitans.com");
+            token.DangerousAcceptAnyServerCertificateValidator.ShouldBe(false);
+
+            token.SecurityOption.IPAllowedList.ShouldContain("123.123.123.123");
+            token.SecurityOption.IPBlockedList.ShouldContain("114.114.114.114");
+
+            result.ShouldContain(c => c.Name == "Loongle" && c.DownstreamScheme == "http");
+            result.ShouldContain(c => c.UpstreamPathTemplate == "/taitans/loognle" && c.DownstreamPathTemplate == "/ttgzs/loongle");
+            result.ShouldContain(c => c.UpstreamPathTemplate == "/taitans/com" && c.DownstreamPathTemplate == "/ttgzs/net");
+
+        }
+
 
     }
 }

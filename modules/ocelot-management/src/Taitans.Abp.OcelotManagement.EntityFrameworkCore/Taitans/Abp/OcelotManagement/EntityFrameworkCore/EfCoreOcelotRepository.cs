@@ -30,9 +30,9 @@ namespace Taitans.Abp.OcelotManagement.EntityFrameworkCore
             return await query.FirstOrDefaultAsync(GetCancellationToken(cancellationToken)).ConfigureAwait(false);
         }
 
-        public async Task<IList<OcelotReRoute>> GetReRoutesAsync(Guid id)
+        public async Task<List<OcelotRoute>> GetRoutesAsync(Guid id)
         {
-            return await DbContext.Set<OcelotReRoute>()
+            return await DbContext.Set<OcelotRoute>()
                 .IncludeDetails(true)
                 .Where(c => c.GlobalConfigurationId == id).OrderBy(c => c.Sort)
                 .ToListAsync();

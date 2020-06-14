@@ -29,7 +29,7 @@ namespace Taitans.Abp.OcelotManagement
 
             ocelot = await OcelotRepository.FindByNameAsync("middleware", includeDetails: true);
             ocelot.ShouldNotBeNull();
-            ocelot.ReRoutes.Count.ShouldBeGreaterThanOrEqualTo(2);
+            ocelot.Routes.Count.ShouldBeGreaterThanOrEqualTo(2);
         }
 
         [Fact]
@@ -45,7 +45,7 @@ namespace Taitans.Abp.OcelotManagement
 
             ocelot = await OcelotRepository.FindAsync(ocelotId, includeDetails: true);
             ocelot.ShouldNotBeNull();
-            ocelot.ReRoutes.Count.ShouldBeGreaterThanOrEqualTo(2);
+            ocelot.Routes.Count.ShouldBeGreaterThanOrEqualTo(2);
         }
 
         [Fact]
@@ -59,12 +59,12 @@ namespace Taitans.Abp.OcelotManagement
         public async Task Should_Eager_Load_Ocelot_Collections()
         {
             var role = await OcelotRepository.FindByNameAsync("middleware");
-            role.ReRoutes.ShouldNotBeNull();
-            role.ReRoutes.Any().ShouldBeTrue();
+            role.Routes.ShouldNotBeNull();
+            role.Routes.Any().ShouldBeTrue();
         }
 
         [Fact]
-        public async Task Should_ReRoute_Value_Check_True()
+        public async Task Should_Route_Value_Check_True()
         {
 
             var ocelot = await OcelotRepository.FindByNameAsync("middleware").ConfigureAwait(false);
@@ -85,55 +85,55 @@ namespace Taitans.Abp.OcelotManagement
             ocelot.DownstreamScheme.ShouldNotBeNull();
             ocelot.HttpHandlerOption.ShouldNotBeNull();
 
-            ocelot.ReRoutes.Count.ShouldBeGreaterThan(0);
+            ocelot.Routes.Count.ShouldBeGreaterThan(0);
 
-            var reRoute = ocelot.FindReRoute("Token");
-            reRoute.Timeout.ShouldBe(4399);
-            reRoute.Priority.ShouldBe(3389);
-            reRoute.DelegatingHandlers.Count.ShouldBeGreaterThan(0);
-            reRoute.DelegatingHandlers[0].Delegating.ShouldBe("Taitans");
-            reRoute.Key.ShouldBe("WO_CAO");
-            reRoute.UpstreamHost.ShouldBe("http://www.Taitans.com");
-            reRoute.DownstreamHostAndPorts.ShouldNotBeNull();
+            var route = ocelot.FindRoute("Token");
+            route.Timeout.ShouldBe(4399);
+            route.Priority.ShouldBe(3389);
+            route.DelegatingHandlers.Count.ShouldBeGreaterThan(0);
+            route.DelegatingHandlers[0].Delegating.ShouldBe("Taitans");
+            route.Key.ShouldBe("WO_CAO");
+            route.UpstreamHost.ShouldBe("http://www.Taitans.com");
+            route.DownstreamHostAndPorts.ShouldNotBeNull();
 
-            reRoute.HttpHandlerOption.ShouldNotBeNull();
-            reRoute.HttpHandlerOption.AllowAutoRedirect.ShouldBe(true);
-            reRoute.HttpHandlerOption.UseCookieContainer.ShouldBe(true);
-            reRoute.HttpHandlerOption.UseProxy.ShouldBe(true);
-            reRoute.HttpHandlerOption.UseTracing.ShouldBe(true);
+            route.HttpHandlerOption.ShouldNotBeNull();
+            route.HttpHandlerOption.AllowAutoRedirect.ShouldBe(true);
+            route.HttpHandlerOption.UseCookieContainer.ShouldBe(true);
+            route.HttpHandlerOption.UseProxy.ShouldBe(true);
+            route.HttpHandlerOption.UseTracing.ShouldBe(true);
 
-            reRoute.AuthenticationOption.ShouldNotBeNull();
-            reRoute.AuthenticationOption.AllowedScopes.Count.ShouldBe(1);
-            reRoute.RateLimitOption.ShouldNotBeNull();
-            reRoute.RateLimitOption.ClientWhitelist.Count.ShouldBe(1);
-            reRoute.LoadBalancerOption.ShouldNotBeNull();
-            reRoute.LoadBalancerOption.Expiry.ShouldBe(95);
-            reRoute.LoadBalancerOption.Key.ShouldBe("Taitans");
-            reRoute.LoadBalancerOption.Type.ShouldBe("www.Taitans.com");
-            reRoute.QoSOption.ShouldNotBeNull();
-            reRoute.QoSOption.DurationOfBreak.ShouldBe(24300);
-            reRoute.QoSOption.ExceptionsAllowedBeforeBreaking.ShouldBe(802);
-            reRoute.QoSOption.TimeoutValue.ShouldBe(30624);
-            reRoute.DownstreamScheme.ShouldBe("http");
-            reRoute.ServiceName.ShouldBe("Taitans-cn");
-            reRoute.ReRouteIsCaseSensitive.ShouldBe(true);
-            reRoute.CacheOption.ShouldNotBeNull();
-            reRoute.CacheOption.TtlSeconds.ShouldBe(2020);
-            reRoute.CacheOption.Region.ShouldBe("github.com/Taitans");
-            reRoute.RequestIdKey.ShouldNotBeNull("ttgzs.cn");
-            reRoute.AddQueriesToRequests.ShouldContainKeyAndValue("NB", "www.Taitans.com");
-            reRoute.RouteClaimsRequirements.ShouldContainKeyAndValue("MVP", "www.Taitans.com");
-            reRoute.AddClaimsToRequests.ShouldContainKeyAndValue("AT", "www.Taitans.com");
-            reRoute.DownstreamHeaderTransforms.ShouldContainKeyAndValue("CVT", "www.Taitans.com");
-            reRoute.UpstreamHeaderTransforms.ShouldContainKeyAndValue("DCT", "www.Taitans.com");
-            reRoute.AddHeadersToRequests.ShouldContainKeyAndValue("Trubost", "www.Taitans.com");
-            reRoute.ChangeDownstreamPathTemplates.ShouldContainKeyAndValue("EVCT", "www.Taitans.com");
-            reRoute.UpstreamHttpMethods.Count.ShouldBe(1);
-            reRoute.UpstreamPathTemplate.ShouldBe("/connect/token");
-            reRoute.DownstreamPathTemplate.ShouldBe("/connect/token");
-            reRoute.DangerousAcceptAnyServerCertificateValidator.ShouldBe(true);
-            reRoute.SecurityOption.IPAllowedList.Count.ShouldBe(1);
-            reRoute.SecurityOption.IPBlockedList.Count.ShouldBe(1);
+            route.AuthenticationOption.ShouldNotBeNull();
+            route.AuthenticationOption.AllowedScopes.Count.ShouldBe(1);
+            route.RateLimitOption.ShouldNotBeNull();
+            route.RateLimitOption.ClientWhitelist.Count.ShouldBe(1);
+            route.LoadBalancerOption.ShouldNotBeNull();
+            route.LoadBalancerOption.Expiry.ShouldBe(95);
+            route.LoadBalancerOption.Key.ShouldBe("Taitans");
+            route.LoadBalancerOption.Type.ShouldBe("www.Taitans.com");
+            route.QoSOption.ShouldNotBeNull();
+            route.QoSOption.DurationOfBreak.ShouldBe(24300);
+            route.QoSOption.ExceptionsAllowedBeforeBreaking.ShouldBe(802);
+            route.QoSOption.TimeoutValue.ShouldBe(30624);
+            route.DownstreamScheme.ShouldBe("http");
+            route.ServiceName.ShouldBe("Taitans-cn");
+            route.RouteIsCaseSensitive.ShouldBe(true);
+            route.CacheOption.ShouldNotBeNull();
+            route.CacheOption.TtlSeconds.ShouldBe(2020);
+            route.CacheOption.Region.ShouldBe("github.com/Taitans");
+            route.RequestIdKey.ShouldNotBeNull("ttgzs.cn");
+            route.AddQueriesToRequests.ShouldContainKeyAndValue("NB", "www.Taitans.com");
+            route.RouteClaimsRequirements.ShouldContainKeyAndValue("MVP", "www.Taitans.com");
+            route.AddClaimsToRequests.ShouldContainKeyAndValue("AT", "www.Taitans.com");
+            route.DownstreamHeaderTransforms.ShouldContainKeyAndValue("CVT", "www.Taitans.com");
+            route.UpstreamHeaderTransforms.ShouldContainKeyAndValue("DCT", "www.Taitans.com");
+            route.AddHeadersToRequests.ShouldContainKeyAndValue("Trubost", "www.Taitans.com");
+            route.ChangeDownstreamPathTemplates.ShouldContainKeyAndValue("EVCT", "www.Taitans.com");
+            route.UpstreamHttpMethods.Count.ShouldBe(1);
+            route.UpstreamPathTemplate.ShouldBe("/connect/token");
+            route.DownstreamPathTemplate.ShouldBe("/connect/token");
+            route.DangerousAcceptAnyServerCertificateValidator.ShouldBe(true);
+            route.SecurityOption.IPAllowedList.Count.ShouldBe(1);
+            route.SecurityOption.IPBlockedList.Count.ShouldBe(1);
         }
     }
 }

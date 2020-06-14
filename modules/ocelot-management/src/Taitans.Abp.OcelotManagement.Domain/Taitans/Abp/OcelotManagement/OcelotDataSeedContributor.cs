@@ -45,21 +45,21 @@ namespace Taitans.Abp.OcelotManagement
                     int index = 0;
                     do
                     {
-                        string name = configurationSection[$"ReRoutes:{index}:Name"];
+                        string name = configurationSection[$"Routes:{index}:Name"];
 
                         if (string.IsNullOrWhiteSpace(name))
                         {
                             break;
                         }
-                        var UpstreamPathTemplate = configurationSection[$"ReRoutes:{index}:UpstreamPathTemplate"];
-                        var DownstreamScheme = configurationSection[$"ReRoutes:{index}:DownstreamScheme"];
-                        var DownstreamPathTemplate = configurationSection[$"ReRoutes:{index}:DownstreamPathTemplate"];
+                        var UpstreamPathTemplate = configurationSection[$"Routes:{index}:UpstreamPathTemplate"];
+                        var DownstreamScheme = configurationSection[$"Routes:{index}:DownstreamScheme"];
+                        var DownstreamPathTemplate = configurationSection[$"Routes:{index}:DownstreamPathTemplate"];
 
                         int methodIndex = 0;
                         List<string> methods = new List<string>();
                         do
                         {
-                            string method = configurationSection[$"ReRoutes:{index}:UpstreamHttpMethod:{methodIndex++}"];
+                            string method = configurationSection[$"Routes:{index}:UpstreamHttpMethod:{methodIndex++}"];
                             if (string.IsNullOrWhiteSpace(method))
                             {
                                 break;
@@ -71,8 +71,8 @@ namespace Taitans.Abp.OcelotManagement
                         Dictionary<string, int> DownstreamHostAndPorts = new Dictionary<string, int>();
                         do
                         {
-                            string host = configurationSection[$"ReRoutes:{index}:DownstreamHostAndPorts:{hostIndex}:Host"];
-                            string port = configurationSection[$"ReRoutes:{index}:DownstreamHostAndPorts:{hostIndex}:Port"];
+                            string host = configurationSection[$"Routes:{index}:DownstreamHostAndPorts:{hostIndex}:Host"];
+                            string port = configurationSection[$"Routes:{index}:DownstreamHostAndPorts:{hostIndex}:Port"];
                             hostIndex++;
                             if (string.IsNullOrWhiteSpace(host) || string.IsNullOrWhiteSpace(port))
                             {
@@ -81,14 +81,15 @@ namespace Taitans.Abp.OcelotManagement
                             DownstreamHostAndPorts.Add(host, Convert.ToInt32(port));
                         } while (true);
 
-                        ocelot.AddReRoutes(
+                        ocelot.AddRoutes(
                             name,
                             UpstreamPathTemplate,
                             null,
-                            DownstreamScheme,
+                            null,
                             DownstreamPathTemplate,
-                            methods,
-                            DownstreamHostAndPorts
+                            DownstreamScheme,
+                            upstreamHttpMethods: methods,
+                            downstreamHostAndPorts: DownstreamHostAndPorts
                             );
 
                         index++;

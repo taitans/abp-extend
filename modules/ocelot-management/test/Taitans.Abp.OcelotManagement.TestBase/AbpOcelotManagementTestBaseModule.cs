@@ -22,8 +22,8 @@ namespace Taitans.Abp.OcelotManagement
             using (var scope = context.ServiceProvider.CreateScope())
             {
                 scope.ServiceProvider
-               .GetRequiredService<AbpOcelotManagementTestDataBuilder>()
-               .Build();
+                    .GetRequiredService<AbpOcelotManagementTestDataBuilder>()
+                    .Build();
             }
         }
     }

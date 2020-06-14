@@ -5,25 +5,27 @@ using Volo.Abp.Domain.Entities;
 
 namespace Taitans.Abp.OcelotManagement
 {
-    public class ReRouteRateLimitRule : Entity
+    public class RouteRateLimitRule : Entity
     {
         public virtual Guid GlobalConfigurationId { get; protected set; }
-        public virtual string ReRouteName { get; protected set; }
+        public virtual string RouteName { get; protected set; }
 
-        public virtual List<ReRouteRateLimitRuleClientWhitelist> ClientWhitelist { get; protected set; }
+        public virtual List<RouteRateLimitRuleClientWhitelist> ClientWhitelist { get; protected set; }
         public virtual bool EnableRateLimiting { get; set; }
         public virtual string Period { get; set; }
         public virtual double PeriodTimespan { get; set; }
         public virtual long Limit { get; set; }
 
-        public ReRouteRateLimitRule()
+        public RouteRateLimitRule(Guid globalConfigurationId, string routeName)
         {
-            ClientWhitelist = new List<ReRouteRateLimitRuleClientWhitelist>();
+            GlobalConfigurationId = globalConfigurationId;
+            RouteName = routeName;
+            ClientWhitelist = new List<RouteRateLimitRuleClientWhitelist>();
         }
 
         public virtual void AddWhitelist(string whitelist)
         {
-            ClientWhitelist.Add(new ReRouteRateLimitRuleClientWhitelist(whitelist));
+            ClientWhitelist.Add(new RouteRateLimitRuleClientWhitelist(GlobalConfigurationId, RouteName, whitelist));
         }
 
         public virtual void RemoveAllWhitelists()
@@ -43,7 +45,7 @@ namespace Taitans.Abp.OcelotManagement
 
         public override object[] GetKeys()
         {
-            return new object[] { GlobalConfigurationId, ReRouteName };
+            return new object[] { GlobalConfigurationId, RouteName };
         }
     }
 }

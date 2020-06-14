@@ -12,6 +12,11 @@ namespace Taitans.Abp.OcelotManagement
         public virtual bool DisableRateLimitHeaders { get; set; }
         public virtual int HttpStatusCode { get; set; }
 
+        public OcelotRateLimitOption(Guid globalConfigurationId)
+        {
+            GlobalConfigurationId = globalConfigurationId;
+        }
+
         public override object[] GetKeys()
         {
             return new object[] { GlobalConfigurationId };

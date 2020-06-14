@@ -14,6 +14,11 @@ namespace Taitans.Abp.OcelotManagement
         public virtual string Namespace { get; set; }
         public virtual int PollingInterval { get; set; }
 
+        public OcelotServiceDiscoveryProvider(Guid globalConfigurationId)
+        {
+            GlobalConfigurationId = globalConfigurationId;
+        }
+
         public override object[] GetKeys()
         {
             return new object[] { GlobalConfigurationId };

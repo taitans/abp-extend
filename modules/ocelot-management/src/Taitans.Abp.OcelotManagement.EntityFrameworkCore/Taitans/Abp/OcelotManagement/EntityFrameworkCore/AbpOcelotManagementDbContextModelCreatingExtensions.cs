@@ -25,163 +25,163 @@ namespace Taitans.Abp.OcelotManagement.EntityFrameworkCore
 
             Check.NotNull(builder, nameof(builder));
 
-            builder.Entity<ReRouteDelegatingHandler>(b =>
+            builder.Entity<RouteDelegatingHandler>(b =>
             {
-                b.ToTable(options.TablePrefix + "ReRouteDelegatingHandler",
+                b.ToTable(options.TablePrefix + "RouteDelegatingHandler",
                     options.Schema);
 
-                b.Property(t => t.ReRouteName).HasMaxLength(OcelotConsts.MaxNameLength);
+                b.Property(t => t.RouteName).HasMaxLength(OcelotConsts.MaxNameLength);
 
-                b.HasKey(r => new { r.GlobalConfigurationId, r.ReRouteName, r.Delegating });
+                b.HasKey(r => new { r.GlobalConfigurationId, r.RouteName, r.Delegating });
             });
 
-            builder.Entity<ReRouteDownstreamHostAndPort>(b =>
+            builder.Entity<RouteDownstreamHostAndPort>(b =>
             {
-                b.ToTable(options.TablePrefix + "ReRouteDownstreamHostAndPorts",
+                b.ToTable(options.TablePrefix + "RouteDownstreamHostAndPorts",
                     options.Schema);
 
-                b.Property(t => t.ReRouteName).HasMaxLength(OcelotConsts.MaxNameLength);
+                b.Property(t => t.RouteName).HasMaxLength(OcelotConsts.MaxNameLength);
 
-                b.HasKey(r => new { r.GlobalConfigurationId, r.ReRouteName, r.Host, r.Port });
+                b.HasKey(r => new { r.GlobalConfigurationId, r.RouteName, r.Host, r.Port });
             });
 
-            builder.Entity<ReRouteHttpHandlerOption>(b =>
+            builder.Entity<RouteHttpHandlerOption>(b =>
             {
-                b.ToTable(options.TablePrefix + "ReRouteHttpHandlerOptions",
+                b.ToTable(options.TablePrefix + "RouteHttpHandlerOptions",
                     options.Schema);
 
-                b.Property(t => t.ReRouteName).HasMaxLength(OcelotConsts.MaxNameLength);
+                b.Property(t => t.RouteName).HasMaxLength(OcelotConsts.MaxNameLength);
 
-                b.HasKey(r => new { r.GlobalConfigurationId, r.ReRouteName });
+                b.HasKey(r => new { r.GlobalConfigurationId, r.RouteName });
             });
 
-            builder.Entity<ReRouteAuthenticationOptionAllowedScope>(b =>
+            builder.Entity<RouteAuthenticationOptionAllowedScope>(b =>
             {
-                b.ToTable(options.TablePrefix + "ReRouteAuthenticationOptionAllowedScope",
+                b.ToTable(options.TablePrefix + "RouteAuthenticationOptionAllowedScope",
                     options.Schema);
 
                 b.Property(t => t.Scope).HasMaxLength(OcelotConsts.MaxNameLength);
 
-                b.HasKey(r => new { r.GlobalConfigurationId, r.ReRouteName, r.Scope });
+                b.HasKey(r => new { r.GlobalConfigurationId, r.RouteName, r.Scope });
             });
 
-            builder.Entity<ReRouteAuthenticationOption>(b =>
+            builder.Entity<RouteAuthenticationOption>(b =>
             {
-                b.ToTable(options.TablePrefix + "ReRouteAuthenticationOptions",
+                b.ToTable(options.TablePrefix + "RouteAuthenticationOptions",
                     options.Schema);
 
-                b.Property(t => t.ReRouteName).HasMaxLength(OcelotConsts.MaxNameLength);
+                b.Property(t => t.RouteName).HasMaxLength(OcelotConsts.MaxNameLength);
 
-                b.HasKey(r => new { r.GlobalConfigurationId, r.ReRouteName });
+                b.HasKey(r => new { r.GlobalConfigurationId, r.RouteName });
 
-                b.HasMany(r => r.AllowedScopes).WithOne().HasForeignKey(r => new { r.GlobalConfigurationId, r.ReRouteName }).OnDelete(DeleteBehavior.Cascade);
+                b.HasMany(r => r.AllowedScopes).WithOne().HasForeignKey(r => new { r.GlobalConfigurationId, r.RouteName }).OnDelete(DeleteBehavior.Cascade);
             });
 
 
 
-            builder.Entity<ReRouteRateLimitRule>(b =>
+            builder.Entity<RouteRateLimitRule>(b =>
             {
-                b.ToTable(options.TablePrefix + "ReRouteRateLimitRules",
+                b.ToTable(options.TablePrefix + "RouteRateLimitRules",
                     options.Schema);
 
-                b.Property(t => t.ReRouteName).HasMaxLength(OcelotConsts.MaxNameLength);
+                b.Property(t => t.RouteName).HasMaxLength(OcelotConsts.MaxNameLength);
 
-                b.HasKey(r => new { r.GlobalConfigurationId, r.ReRouteName });
+                b.HasKey(r => new { r.GlobalConfigurationId, r.RouteName });
 
-                b.HasMany(r => r.ClientWhitelist).WithOne().HasForeignKey(r => new { r.GlobalConfigurationId, r.ReRouteName }).OnDelete(DeleteBehavior.Cascade);
+                b.HasMany(r => r.ClientWhitelist).WithOne().HasForeignKey(r => new { r.GlobalConfigurationId, r.RouteName }).OnDelete(DeleteBehavior.Cascade);
             });
 
-            builder.Entity<ReRouteRateLimitRuleClientWhitelist>(b =>
+            builder.Entity<RouteRateLimitRuleClientWhitelist>(b =>
             {
-                b.ToTable(options.TablePrefix + "ReRouteRateLimitRuleClientWhitelist",
+                b.ToTable(options.TablePrefix + "RouteRateLimitRuleClientWhitelist",
                     options.Schema);
 
-                b.Property(t => t.ReRouteName).HasMaxLength(OcelotConsts.MaxNameLength);
+                b.Property(t => t.RouteName).HasMaxLength(OcelotConsts.MaxNameLength);
 
-                b.HasKey(r => new { r.GlobalConfigurationId, r.ReRouteName, r.Whitelist });
+                b.HasKey(r => new { r.GlobalConfigurationId, r.RouteName, r.Whitelist });
             });
 
-            builder.Entity<ReRouteLoadBalancerOption>(b =>
+            builder.Entity<RouteLoadBalancerOption>(b =>
             {
-                b.ToTable(options.TablePrefix + "ReRouteLoadBalancerOptions",
+                b.ToTable(options.TablePrefix + "RouteLoadBalancerOptions",
                     options.Schema);
 
-                b.Property(t => t.ReRouteName).HasMaxLength(OcelotConsts.MaxNameLength);
+                b.Property(t => t.RouteName).HasMaxLength(OcelotConsts.MaxNameLength);
 
-                b.HasKey(r => new { r.GlobalConfigurationId, r.ReRouteName });
+                b.HasKey(r => new { r.GlobalConfigurationId, r.RouteName });
             });
 
-            builder.Entity<ReRouteQoSOption>(b =>
+            builder.Entity<RouteQoSOption>(b =>
             {
-                b.ToTable(options.TablePrefix + "ReRouteQoSOptions",
+                b.ToTable(options.TablePrefix + "RouteQoSOptions",
                     options.Schema);
 
-                b.Property(t => t.ReRouteName).HasMaxLength(OcelotConsts.MaxNameLength);
+                b.Property(t => t.RouteName).HasMaxLength(OcelotConsts.MaxNameLength);
 
-                b.HasKey(r => new { r.GlobalConfigurationId, r.ReRouteName });
+                b.HasKey(r => new { r.GlobalConfigurationId, r.RouteName });
             });
 
-            builder.Entity<ReRouteCacheOption>(b =>
+            builder.Entity<RouteCacheOption>(b =>
             {
-                b.ToTable(options.TablePrefix + "ReRouteCacheOptions",
+                b.ToTable(options.TablePrefix + "RouteCacheOptions",
                     options.Schema);
 
-                b.Property(t => t.ReRouteName).HasMaxLength(OcelotConsts.MaxNameLength);
+                b.Property(t => t.RouteName).HasMaxLength(OcelotConsts.MaxNameLength);
 
-                b.HasKey(r => new { r.GlobalConfigurationId, r.ReRouteName });
+                b.HasKey(r => new { r.GlobalConfigurationId, r.RouteName });
             });
 
-            builder.Entity<ReRouteUpstreamHttpMethod>(b =>
+            builder.Entity<RouteUpstreamHttpMethod>(b =>
             {
-                b.ToTable(AbpOcelotManagementDbProperties.DbTablePrefix + "ReRouteUpstreamHttpMethods",
+                b.ToTable(AbpOcelotManagementDbProperties.DbTablePrefix + "RouteUpstreamHttpMethods",
                    AbpOcelotManagementDbProperties.DbSchema);
 
-                b.Property(t => t.ReRouteName).HasMaxLength(OcelotConsts.MaxNameLength);
+                b.Property(t => t.RouteName).HasMaxLength(OcelotConsts.MaxNameLength);
 
-                b.HasKey(r => new { r.GlobalConfigurationId, r.ReRouteName, r.Method });
+                b.HasKey(r => new { r.GlobalConfigurationId, r.RouteName, r.Method });
             });
 
-            builder.Entity<ReRouteSecurityOption>(b =>
+            builder.Entity<RouteSecurityOption>(b =>
             {
-                b.ToTable(options.TablePrefix + "ReRouteSecurityOptions",
+                b.ToTable(options.TablePrefix + "RouteSecurityOptions",
                     options.Schema);
 
-                b.Property(t => t.ReRouteName).HasMaxLength(OcelotConsts.MaxNameLength);
+                b.Property(t => t.RouteName).HasMaxLength(OcelotConsts.MaxNameLength);
 
-                b.HasKey(r => new { r.GlobalConfigurationId, r.ReRouteName });
+                b.HasKey(r => new { r.GlobalConfigurationId, r.RouteName });
 
-                b.HasMany(r => r.IPAllowedList).WithOne().HasForeignKey(r => new { r.GlobalConfigurationId, r.ReRouteName }).OnDelete(DeleteBehavior.Cascade);
+                b.HasMany(r => r.IPAllowedList).WithOne().HasForeignKey(r => new { r.GlobalConfigurationId, r.RouteName }).OnDelete(DeleteBehavior.Cascade);
 
-                b.HasMany(r => r.IPBlockedList).WithOne().HasForeignKey(r => new { r.GlobalConfigurationId, r.ReRouteName }).OnDelete(DeleteBehavior.Cascade);
+                b.HasMany(r => r.IPBlockedList).WithOne().HasForeignKey(r => new { r.GlobalConfigurationId, r.RouteName }).OnDelete(DeleteBehavior.Cascade);
             });
 
-            builder.Entity<ReRouteSecurityOptionIPAllowed>(b =>
+            builder.Entity<RouteSecurityOptionIPAllowed>(b =>
             {
-                b.ToTable(options.TablePrefix + "ReRouteSecurityOptionIPAllowed",
+                b.ToTable(options.TablePrefix + "RouteSecurityOptionIPAllowed",
                     options.Schema);
 
-                b.Property(t => t.ReRouteName).HasMaxLength(OcelotConsts.MaxNameLength);
+                b.Property(t => t.RouteName).HasMaxLength(OcelotConsts.MaxNameLength);
 
-                b.HasKey(r => new { r.GlobalConfigurationId, r.ReRouteName, r.IP });
+                b.HasKey(r => new { r.GlobalConfigurationId, r.RouteName, r.IP });
 
             });
 
-            builder.Entity<ReRouteSecurityOptionIPBlocked>(b =>
+            builder.Entity<RouteSecurityOptionIPBlocked>(b =>
             {
-                b.ToTable(options.TablePrefix + "ReRouteSecurityOptionIPBlocked",
+                b.ToTable(options.TablePrefix + "RouteSecurityOptionIPBlocked",
                     options.Schema);
 
-                b.Property(t => t.ReRouteName).HasMaxLength(OcelotConsts.MaxNameLength);
+                b.Property(t => t.RouteName).HasMaxLength(OcelotConsts.MaxNameLength);
 
-                b.HasKey(r => new { r.GlobalConfigurationId, r.ReRouteName, r.IP });
+                b.HasKey(r => new { r.GlobalConfigurationId, r.RouteName, r.IP });
             });
 
 
 
 
-            builder.Entity<OcelotReRoute>(b =>
+            builder.Entity<OcelotRoute>(b =>
             {
-                b.ToTable(AbpOcelotManagementDbProperties.DbTablePrefix + "ReRoutes",
+                b.ToTable(AbpOcelotManagementDbProperties.DbTablePrefix + "Routes",
                     AbpOcelotManagementDbProperties.DbSchema);
 
                 b.Property(t => t.Name).IsRequired().HasMaxLength(OcelotConsts.MaxNameLength);
@@ -216,24 +216,24 @@ namespace Taitans.Abp.OcelotManagement.EntityFrameworkCore
 
                 b.HasKey(x => new { x.GlobalConfigurationId, x.Name });
 
-                b.HasMany(c => c.DelegatingHandlers).WithOne().HasForeignKey(r => new { r.GlobalConfigurationId, r.ReRouteName }).OnDelete(DeleteBehavior.Cascade);
-                b.HasMany(c => c.DownstreamHostAndPorts).WithOne().HasForeignKey(r => new { r.GlobalConfigurationId, r.ReRouteName }).OnDelete(DeleteBehavior.Cascade).IsRequired();
+                b.HasMany(c => c.DelegatingHandlers).WithOne().HasForeignKey(r => new { r.GlobalConfigurationId, r.RouteName }).OnDelete(DeleteBehavior.Cascade);
+                b.HasMany(c => c.DownstreamHostAndPorts).WithOne().HasForeignKey(r => new { r.GlobalConfigurationId, r.RouteName }).OnDelete(DeleteBehavior.Cascade).IsRequired();
 
-                b.HasOne(c => c.HttpHandlerOption).WithOne().HasForeignKey<ReRouteHttpHandlerOption>(r => new { r.GlobalConfigurationId, r.ReRouteName }).OnDelete(DeleteBehavior.Cascade);
+                b.HasOne(c => c.HttpHandlerOption).WithOne().HasForeignKey<RouteHttpHandlerOption>(r => new { r.GlobalConfigurationId, r.RouteName }).OnDelete(DeleteBehavior.Cascade);
 
-                b.HasOne(c => c.AuthenticationOption).WithOne().HasForeignKey<ReRouteAuthenticationOption>(r => new { r.GlobalConfigurationId, r.ReRouteName }).OnDelete(DeleteBehavior.Cascade);
+                b.HasOne(c => c.AuthenticationOption).WithOne().HasForeignKey<RouteAuthenticationOption>(r => new { r.GlobalConfigurationId, r.RouteName }).OnDelete(DeleteBehavior.Cascade);
 
-                b.HasOne(c => c.RateLimitOption).WithOne().HasForeignKey<ReRouteRateLimitRule>(r => new { r.GlobalConfigurationId, r.ReRouteName }).OnDelete(DeleteBehavior.Cascade);
+                b.HasOne(c => c.RateLimitOption).WithOne().HasForeignKey<RouteRateLimitRule>(r => new { r.GlobalConfigurationId, r.RouteName }).OnDelete(DeleteBehavior.Cascade);
 
-                b.HasOne(c => c.LoadBalancerOption).WithOne().HasForeignKey<ReRouteLoadBalancerOption>(r => new { r.GlobalConfigurationId, r.ReRouteName }).OnDelete(DeleteBehavior.Cascade);
+                b.HasOne(c => c.LoadBalancerOption).WithOne().HasForeignKey<RouteLoadBalancerOption>(r => new { r.GlobalConfigurationId, r.RouteName }).OnDelete(DeleteBehavior.Cascade);
 
-                b.HasOne(c => c.QoSOption).WithOne().HasForeignKey<ReRouteQoSOption>(r => new { r.GlobalConfigurationId, r.ReRouteName }).OnDelete(DeleteBehavior.Cascade);
+                b.HasOne(c => c.QoSOption).WithOne().HasForeignKey<RouteQoSOption>(r => new { r.GlobalConfigurationId, r.RouteName }).OnDelete(DeleteBehavior.Cascade);
 
-                b.HasOne(c => c.CacheOption).WithOne().HasForeignKey<ReRouteCacheOption>(r => new { r.GlobalConfigurationId, r.ReRouteName }).OnDelete(DeleteBehavior.Cascade);
+                b.HasOne(c => c.CacheOption).WithOne().HasForeignKey<RouteCacheOption>(r => new { r.GlobalConfigurationId, r.RouteName }).OnDelete(DeleteBehavior.Cascade);
 
-                b.HasMany(c => c.UpstreamHttpMethods).WithOne().HasForeignKey(r => new { r.GlobalConfigurationId, r.ReRouteName }).OnDelete(DeleteBehavior.Cascade).IsRequired();
+                b.HasMany(c => c.UpstreamHttpMethods).WithOne().HasForeignKey(r => new { r.GlobalConfigurationId, r.RouteName }).OnDelete(DeleteBehavior.Cascade).IsRequired();
 
-                b.HasOne(c => c.SecurityOption).WithOne().HasForeignKey<ReRouteSecurityOption>(r => new { r.GlobalConfigurationId, r.ReRouteName }).OnDelete(DeleteBehavior.Cascade);
+                b.HasOne(c => c.SecurityOption).WithOne().HasForeignKey<RouteSecurityOption>(r => new { r.GlobalConfigurationId, r.RouteName }).OnDelete(DeleteBehavior.Cascade);
             });
 
             builder.Entity<OcelotServiceDiscoveryProvider>(b =>
@@ -291,7 +291,7 @@ namespace Taitans.Abp.OcelotManagement.EntityFrameworkCore
 
                 b.HasOne(c => c.HttpHandlerOption).WithOne().HasForeignKey<OcelotHttpHandlerOption>(r => new { r.GlobalConfigurationId }).OnDelete(DeleteBehavior.Cascade);
 
-                b.HasMany(c => c.ReRoutes).WithOne().HasForeignKey(c => c.GlobalConfigurationId).OnDelete(DeleteBehavior.Cascade);
+                b.HasMany(c => c.Routes).WithOne().HasForeignKey(c => c.GlobalConfigurationId).OnDelete(DeleteBehavior.Cascade);
 
                 b.HasIndex(c => c.Name); //设置唯一
             });

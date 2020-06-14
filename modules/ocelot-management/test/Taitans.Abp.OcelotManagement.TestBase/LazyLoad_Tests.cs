@@ -23,8 +23,8 @@ namespace Taitans.Abp.OcelotManagement
             using (var uow = GetRequiredService<IUnitOfWorkManager>().Begin())
             {
                 var role = await OcelotRepository.FindByNameAsync("middleware", includeDetails: true);
-                role.ReRoutes.ShouldNotBeNull();
-                role.ReRoutes.Any().ShouldBeTrue();
+                role.Routes.ShouldNotBeNull();
+                role.Routes.Any().ShouldBeTrue();
 
                 await uow.CompleteAsync();
             }

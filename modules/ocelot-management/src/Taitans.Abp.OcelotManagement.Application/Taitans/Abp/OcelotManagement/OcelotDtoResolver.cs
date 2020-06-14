@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Taitans.Abp.OcelotManagement
 {
-    internal class ReRouteUpstreamHttpMethodResolver : IValueResolver<OcelotReRouteDto, OcelotReRoute, List<ReRouteUpstreamHttpMethod>>
+    internal class RouteUpstreamHttpMethodResolver : IValueResolver<OcelotRouteDto, OcelotRoute, List<RouteUpstreamHttpMethod>>
     {
-        public List<ReRouteUpstreamHttpMethod> Resolve(OcelotReRouteDto source, OcelotReRoute destination, List<ReRouteUpstreamHttpMethod> destMember, ResolutionContext context)
+        public List<RouteUpstreamHttpMethod> Resolve(OcelotRouteDto source, OcelotRoute destination, List<RouteUpstreamHttpMethod> destMember, ResolutionContext context)
         {
             if (source == null || source.UpstreamHttpMethods == null)
             {
@@ -22,9 +22,9 @@ namespace Taitans.Abp.OcelotManagement
         }
     }
 
-    internal class ReRouteUpstreamHttpMethodDtoResolver : IValueResolver<OcelotReRoute, OcelotReRouteDto, List<string>>
+    internal class RouteUpstreamHttpMethodDtoResolver : IValueResolver<OcelotRoute, OcelotRouteDto, List<string>>
     {
-        public List<string> Resolve(OcelotReRoute source, OcelotReRouteDto destination, List<string> destMember, ResolutionContext context)
+        public List<string> Resolve(OcelotRoute source, OcelotRouteDto destination, List<string> destMember, ResolutionContext context)
         {
             if (source == null || source.UpstreamHttpMethods == null)
             {
@@ -35,28 +35,28 @@ namespace Taitans.Abp.OcelotManagement
         }
     }
 
-    internal class ReRouteDownstreamHostAndPortDtoResolver : IValueResolver<OcelotReRoute, OcelotReRouteDto, List<ReRouteDownstreamHostAndPortDto>>
+    internal class RouteDownstreamHostAndPortDtoResolver : IValueResolver<OcelotRoute, OcelotRouteDto, List<RouteDownstreamHostAndPortDto>>
     {
-        public List<ReRouteDownstreamHostAndPortDto> Resolve(OcelotReRoute source, OcelotReRouteDto destination, List<ReRouteDownstreamHostAndPortDto> destMember, ResolutionContext context)
+        public List<RouteDownstreamHostAndPortDto> Resolve(OcelotRoute source, OcelotRouteDto destination, List<RouteDownstreamHostAndPortDto> destMember, ResolutionContext context)
         {
             if (source == null || source.DownstreamHostAndPorts == null)
             {
                 return null;
             }
 
-            List<ReRouteDownstreamHostAndPortDto> dto = new List<ReRouteDownstreamHostAndPortDto>();
+            List<RouteDownstreamHostAndPortDto> dto = new List<RouteDownstreamHostAndPortDto>();
             foreach (var item in source.DownstreamHostAndPorts)
             {
-                dto.Add(new ReRouteDownstreamHostAndPortDto { Host = item.Host, Port = item.Port });
+                dto.Add(new RouteDownstreamHostAndPortDto { Host = item.Host, Port = item.Port });
             }
 
             return dto;
         }
     }
 
-    internal class ReRouteDelegatingHandlerResolver : IValueResolver<OcelotReRouteDto, OcelotReRoute, List<ReRouteDelegatingHandler>>
+    internal class RouteDelegatingHandlerResolver : IValueResolver<OcelotRouteDto, OcelotRoute, List<RouteDelegatingHandler>>
     {
-        public List<ReRouteDelegatingHandler> Resolve(OcelotReRouteDto source, OcelotReRoute destination, List<ReRouteDelegatingHandler> destMember, ResolutionContext context)
+        public List<RouteDelegatingHandler> Resolve(OcelotRouteDto source, OcelotRoute destination, List<RouteDelegatingHandler> destMember, ResolutionContext context)
         {
             if (source == null || source.DelegatingHandlers == null)
             {
@@ -71,9 +71,9 @@ namespace Taitans.Abp.OcelotManagement
         }
     }
 
-    internal class ReRouteDelegatingHandlerDtoResolver : IValueResolver<OcelotReRoute, OcelotReRouteDto, List<string>>
+    internal class RouteDelegatingHandlerDtoResolver : IValueResolver<OcelotRoute, OcelotRouteDto, List<string>>
     {
-        public List<string> Resolve(OcelotReRoute source, OcelotReRouteDto destination, List<string> destMember, ResolutionContext context)
+        public List<string> Resolve(OcelotRoute source, OcelotRouteDto destination, List<string> destMember, ResolutionContext context)
         {
             if (source == null || source.DelegatingHandlers == null)
             {
@@ -84,9 +84,9 @@ namespace Taitans.Abp.OcelotManagement
         }
     }
 
-    internal class ReRouteDownstreamHostAndPortResolver : IValueResolver<OcelotReRouteDto, OcelotReRoute, List<ReRouteDownstreamHostAndPort>>
+    internal class RouteDownstreamHostAndPortResolver : IValueResolver<OcelotRouteDto, OcelotRoute, List<RouteDownstreamHostAndPort>>
     {
-        public List<ReRouteDownstreamHostAndPort> Resolve(OcelotReRouteDto source, OcelotReRoute destination, List<ReRouteDownstreamHostAndPort> destMember, ResolutionContext context)
+        public List<RouteDownstreamHostAndPort> Resolve(OcelotRouteDto source, OcelotRoute destination, List<RouteDownstreamHostAndPort> destMember, ResolutionContext context)
         {
             if (source == null || source.DownstreamHostAndPorts == null)
             {
@@ -102,9 +102,9 @@ namespace Taitans.Abp.OcelotManagement
         }
     }
 
-    internal class ReRouteDtoLoadBalancerOptionsResolver : IValueResolver<OcelotReRoute, OcelotReRouteDto, OcelotLoadBalancerOptionDto>
+    internal class RouteDtoLoadBalancerOptionsResolver : IValueResolver<OcelotRoute, OcelotRouteDto, OcelotLoadBalancerOptionDto>
     {
-        public OcelotLoadBalancerOptionDto Resolve(OcelotReRoute source, OcelotReRouteDto destination, OcelotLoadBalancerOptionDto destMember, ResolutionContext context)
+        public OcelotLoadBalancerOptionDto Resolve(OcelotRoute source, OcelotRouteDto destination, OcelotLoadBalancerOptionDto destMember, ResolutionContext context)
         {
             if (source == null || source.LoadBalancerOption == null)
             {

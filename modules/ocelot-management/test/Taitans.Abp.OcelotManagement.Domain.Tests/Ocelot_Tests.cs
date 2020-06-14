@@ -15,11 +15,11 @@ namespace Taitans.Abp.OcelotManagement
         }
 
         [Fact]
-        public async Task GetReRoutesAsync()
+        public async Task GetRoutesAsync()
         {
             var ocelot = (await _ocelotRepository.GetListAsync()).First();
-            var reRoute = await _ocelotRepository.GetReRoutesAsync(ocelot.Id);
-            reRoute.Count.ShouldBeGreaterThanOrEqualTo(2);
+            var route = await _ocelotRepository.GetRoutesAsync(ocelot.Id);
+            route.Count.ShouldBeGreaterThanOrEqualTo(2);
         }
 
         [Fact]

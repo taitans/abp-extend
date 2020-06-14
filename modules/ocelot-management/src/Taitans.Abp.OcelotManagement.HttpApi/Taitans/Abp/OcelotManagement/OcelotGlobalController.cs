@@ -45,21 +45,21 @@ namespace Taitans.Abp.OcelotManagement
         }
 
         [HttpGet("{id}/re-routes")]
-        public async Task<IList<OcelotReRouteDto>> GetReRoutesAsync(Guid id)
+        public async Task<List<OcelotRouteDto>> GetRoutesAsync(Guid id)
         {
-            return await _ocelotGlobalConfigurationService.GetReRoutesAsync(id);
+            return await _ocelotGlobalConfigurationService.GetRoutesAsync(id);
         }
 
         [HttpPut("{id}/re-routes")]
-        public async Task<IList<OcelotReRouteDto>> UpdateReRoutesAsync(Guid id, List<OcelotReRouteDto> input)
+        public async Task<List<OcelotRouteDto>> UpdateRoutesAsync(Guid id, List<OcelotRouteDto> input)
         {
-            return await _ocelotGlobalConfigurationService.UpdateReRoutesAsync(id, input);
+            return await _ocelotGlobalConfigurationService.UpdateRoutesAsync(id, input);
         }
 
-        [HttpPut("{id}/update-gateway-routes")]
-        public async Task UpdateGatewayRoutesAsync(Guid id)
+        [HttpPut("{id}/reload")]
+        public async Task Reload(Guid id)
         {
-            await _ocelotGlobalConfigurationService.UpdateGatewayRoutesAsync(id);
+            await _ocelotGlobalConfigurationService.Reload(id);
         }
 
         [HttpPut("{id}")]

@@ -17,7 +17,7 @@ namespace Taitans.Abp.OcelotManagement
         public virtual OcelotLoadBalancerOption LoadBalancerOption { get; set; }
         public virtual string DownstreamScheme { get; set; }
         public virtual OcelotHttpHandlerOption HttpHandlerOption { get; set; }
-        public virtual List<OcelotReRoute> ReRoutes { get; protected set; }
+        public virtual List<OcelotRoute> Routes { get; protected set; }
 
         protected Ocelot() { }
 
@@ -31,30 +31,50 @@ namespace Taitans.Abp.OcelotManagement
             RequestIdKey = requestIdKey;
             BaseUrl = baseUrl;
             DownstreamScheme = downstreamScheme;
-            ReRoutes = new List<OcelotReRoute>();
+            Routes = new List<OcelotRoute>();
         }
 
-        public virtual void AddReRoutes(string name,
+        public virtual void AddRoutes(string name,
             string upstreamPathTemplate,
             string upstreamHost,
-            string downstreamScheme,
+            string downstreamHttpMethod,
             string downstreamPathTemplate,
+            string downstreamScheme,
+            string key = null,
+            string serviceNamespace = null,
+            string serviceName = null,
+            bool routeIsCaseSensitive = false,
+            string requestIdKey = null,
+            bool dangerousAcceptAnyServerCertificateValidator = false,
+            int timeout = 5000,
+            int sort = 100,
+            int priority = 1,
             List<string> upstreamHttpMethods = null,
             Dictionary<string, int> downstreamHostAndPorts = null)
         {
-            var reRoute = new OcelotReRoute(
+            var route = new OcelotRoute(
                  Id,
                  name,
-                 upstreamPathTemplate,
                  upstreamHost,
+                 upstreamPathTemplate,
+                 downstreamHttpMethod,
+                 downstreamPathTemplate,
                  downstreamScheme,
-                 downstreamPathTemplate
+                 key,
+                 serviceNamespace,
+                 serviceName,
+                 routeIsCaseSensitive,
+                 requestIdKey,
+                 dangerousAcceptAnyServerCertificateValidator,
+                 timeout,
+                 sort,
+                 priority
             );
             if (upstreamHttpMethods != null)
             {
                 foreach (var item in upstreamHttpMethods)
                 {
-                    reRoute.AddUpstreamHttpMethod(item);
+                    route.AddUpstreamHttpMethod(item);
                 }
 
             }
@@ -62,32 +82,32 @@ namespace Taitans.Abp.OcelotManagement
             {
                 foreach (var item in downstreamHostAndPorts)
                 {
-                    reRoute.AddDownstreamHostAndPort(item.Key, item.Value);
+                    route.AddDownstreamHostAndPort(item.Key, item.Value);
                 }
             }
 
-            ReRoutes.Add(reRoute);
+            Routes.Add(route);
 
         }
 
-        public virtual void RemoveAllReRoutes()
+        public virtual void RemoveAllRoutes()
         {
-            foreach (var route in ReRoutes)
+            foreach (var route in Routes)
             {
                 route.RemoveAllDownstreamHostAndPorts();
                 route.RemoveAllUpstreamHttpMethods();
             }
-            ReRoutes.Clear();
+            Routes.Clear();
         }
 
-        public virtual void RemoveReRoute(string name)
+        public virtual void RemoveRoute(string name)
         {
-            ReRoutes.RemoveAll(c => c.Name == name);
+            Routes.RemoveAll(c => c.Name == name);
         }
 
-        public virtual OcelotReRoute FindReRoute(string name)
+        public virtual OcelotRoute FindRoute(string name)
         {
-            return ReRoutes.FirstOrDefault(c => c.Name == name);
+            return Routes.FirstOrDefault(c => c.Name == name);
         }
     }
 }

@@ -96,17 +96,17 @@ namespace Taitans.Ocelot.Provider.Abp.Repository
 
                 file.GlobalConfiguration = fileGlobalConfig;
                 //TODO: Optimize code structure
-                if (globalResult?.ReRoutes?.Count > 0)
+                if (globalResult?.Routes?.Count > 0)
                 {
-                    _logger.LogInformation($"ReRoute Count:{ globalResult?.ReRoutes?.Count }");
+                    _logger.LogInformation($"Route Count:{ globalResult?.Routes?.Count }");
                     //提取路由信息
-                    var reRoutes = globalResult.ReRoutes.OrderBy(c => c.Sort);
+                    var Routes = globalResult.Routes.OrderBy(c => c.Sort);
 
-                    List<FileReRoute> fileReRoutes = new List<FileReRoute>();
-                    foreach (var route in reRoutes)
+                    List<FileRoute> fileRoutes = new List<FileRoute>();
+                    foreach (var route in Routes)
                     {
-                        _logger.LogInformation($"Loading ReRoute: {route.Name}");
-                        var r = new FileReRoute
+                        _logger.LogInformation($"Loading Route: {route.Name}");
+                        var r = new FileRoute
                         {
                             Key = route.Key,
                             Priority = route.Priority,
@@ -120,7 +120,7 @@ namespace Taitans.Ocelot.Provider.Abp.Repository
                             RequestIdKey = route.RequestIdKey,
                             UpstreamPathTemplate = route.UpstreamPathTemplate,
                             ServiceNamespace = route.ServiceNamespace,
-                            ReRouteIsCaseSensitive = route.ReRouteIsCaseSensitive,
+                            RouteIsCaseSensitive = route.RouteIsCaseSensitive,
                             AddClaimsToRequest = route.AddClaimsToRequests,
                             AddHeadersToRequest = route.AddHeadersToRequests,
                             AddQueriesToRequest = route.AddQueriesToRequests,
@@ -234,12 +234,12 @@ namespace Taitans.Ocelot.Provider.Abp.Repository
                         }
                         r.UpstreamPathTemplate = route.UpstreamPathTemplate;
 
-                        file.ReRoutes.Add(r);
+                        file.Routes.Add(r);
                     }
                 }
                 else
                 {
-                    _logger.LogWarning($"Not Found ReRoute");
+                    _logger.LogWarning($"Not Found Route");
                 }
             }
             else

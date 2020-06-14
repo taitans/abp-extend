@@ -2,7 +2,7 @@
 
 namespace Taitans.Abp.OcelotManagement
 {
-    public class ReRouteAuthenticationOptionDto
+    public class RouteAuthenticationOptionDto
     {
         public string AuthenticationProviderKey { get; set; }
         public List<string> AllowedScopes { get; set; }

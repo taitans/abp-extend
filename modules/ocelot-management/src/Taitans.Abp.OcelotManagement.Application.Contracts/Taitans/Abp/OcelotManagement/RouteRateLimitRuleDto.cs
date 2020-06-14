@@ -2,7 +2,7 @@
 
 namespace Taitans.Abp.OcelotManagement
 {
-    public class ReRouteRateLimitRuleDto
+    public class RouteRateLimitRuleDto
     {
         public virtual List<string> ClientWhitelist { get; set; }
         public virtual bool? EnableRateLimiting { get; set; }
